@@ -718,11 +718,6 @@ const resources = {
       "footer.shippingInfo": "Informations de Livraison",
       "footer.contactInfo": "Informations de Contact",
       "footer.copyright": "© 2025 Marketo. Tous droits réservés. Fait avec ❤️ pour des expériences d'achat incroyables.",
-      "footer.allProducts": "Tous les Produits",
-      "footer.faq": "FAQ",
-      "footer.contactUs": "Nous Contacter",
-      "footer.termsOfService": "Conditions de Service",
-      "footer.cookiePolicy": "Politique des Cookies",
 
       // Common
       "common.loading": "Chargement...",
