@@ -17,6 +17,7 @@ import { LoadingSpinner } from "@/components/ui/loading"
 import { getProductImageUrl } from "@/lib/utils"
 import { toast } from "sonner"
 import { generateProductSlug } from "@/lib/seo"
+import { useTranslation } from "react-i18next"
 
 interface Product {
   id: number
@@ -36,6 +37,7 @@ interface Product {
 }
 
 export default function ProductsPage() {
+  const { t } = useTranslation()
   const [products, setProducts] = useState<Product[]>([])
   const [categories, setCategories] = useState<Array<{id: number, name: string, slug: string}>>([])
   const [loading, setLoading] = useState(true)

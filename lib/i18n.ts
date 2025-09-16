@@ -186,6 +186,17 @@ const resources = {
       "checkout.deliveryInfo": "Delivery Information",
       "checkout.paymentInfo": "Payment Information",
 
+      // Products Page
+      "products.title": "All Products",
+      "products.searchPlaceholder": "Search products...",
+      "products.filterByCategory": "Filter by Category",
+      "products.allCategories": "All Categories",
+      "products.addToCart": "Add to Cart",
+      "products.outOfStock": "Out of Stock",
+      "products.loading": "Loading products...",
+      "products.noProducts": "No products found",
+      "products.noProductsDesc": "Try adjusting your search or filter criteria.",
+
       // Auth
       "auth.welcomeBack": "Welcome Back",
       "auth.signInDesc": "Sign in to your account to continue shopping",
@@ -485,6 +496,17 @@ const resources = {
       "checkout.deliveryInfo": "معلومات التوصيل",
       "checkout.paymentInfo": "معلومات الدفع",
 
+      // Products Page
+      "products.title": "جميع المنتجات",
+      "products.searchPlaceholder": "البحث في المنتجات...",
+      "products.filterByCategory": "تصفية حسب الفئة",
+      "products.allCategories": "جميع الفئات",
+      "products.addToCart": "أضف للسلة",
+      "products.outOfStock": "نفد المخزون",
+      "products.loading": "جاري تحميل المنتجات...",
+      "products.noProducts": "لم يتم العثور على منتجات",
+      "products.noProductsDesc": "حاول تعديل معايير البحث أو التصفية.",
+
       // Auth
       "auth.welcomeBack": "مرحباً بعودتك",
       "auth.signInDesc": "سجل دخولك لحسابك لمتابعة التسوق",
@@ -760,6 +782,17 @@ const resources = {
       "checkout.paymentInfo": "Informations de Paiement",
       "checkout.orderSummary": "Résumé de la Commande",
       "checkout.placeOrder": "Passer la Commande",
+
+      // Products Page
+      "products.title": "Tous les Produits",
+      "products.searchPlaceholder": "Rechercher des produits...",
+      "products.filterByCategory": "Filtrer par Catégorie",
+      "products.allCategories": "Toutes les Catégories",
+      "products.addToCart": "Ajouter au Panier",
+      "products.outOfStock": "Rupture de Stock",
+      "products.loading": "Chargement des produits...",
+      "products.noProducts": "Aucun produit trouvé",
+      "products.noProductsDesc": "Essayez d'ajuster vos critères de recherche ou de filtrage.",
       "checkout.firstName": "Prénom",
       "checkout.lastName": "Nom de Famille",
       "checkout.email": "Email",
