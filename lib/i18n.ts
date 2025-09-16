@@ -118,8 +118,8 @@ const resources = {
       "services.whyChooseUs.satisfaction.title": "100% Satisfaction",
       "services.whyChooseUs.satisfaction.description": "We guarantee your satisfaction with our work or we'll make it right - no questions asked",
       "services.cta.title": "Ready to Get Started?",
-      "services.cta.subtitle": "Contact us today for a free quote and let's bring your vision to life",
-      "services.cta.button": "Get Free Quote",
+      "services.cta.subtitle": "Contact us today for a personalized quote and let's bring your vision to life",
+      "services.cta.button": "Get Quote",
       "services.cta.viewProducts": "Browse Products",
 
       // Features
@@ -397,8 +397,8 @@ const resources = {
       "services.whyChooseUs.satisfaction.title": "100% رضا",
       "services.whyChooseUs.satisfaction.description": "نضمن رضاك عن عملنا أو سنصلحه - بدون أسئلة",
       "services.cta.title": "مستعد للبدء؟",
-      "services.cta.subtitle": "اتصل بنا اليوم للحصول على عرض أسعار مجاني ودعنا نحقق رؤيتك",
-      "services.cta.button": "احصل على عرض مجاني",
+      "services.cta.subtitle": "اتصل بنا اليوم للحصول على عرض أسعار مخصص ودعنا نحقق رؤيتك",
+      "services.cta.button": "احصل على عرض أسعار",
       "services.cta.viewProducts": "تصفح المنتجات",
 
       // Features
@@ -676,8 +676,8 @@ const resources = {
       "services.whyChooseUs.satisfaction.title": "100% Satisfaction",
       "services.whyChooseUs.satisfaction.description": "Nous garantissons votre satisfaction avec notre travail ou nous le corrigerons - sans questions",
       "services.cta.title": "Prêt à Commencer ?",
-      "services.cta.subtitle": "Contactez-nous aujourd'hui pour un devis gratuit et donnons vie à votre vision",
-      "services.cta.button": "Obtenir un Devis Gratuit",
+      "services.cta.subtitle": "Contactez-nous aujourd'hui pour un devis personnalisé et donnons vie à votre vision",
+      "services.cta.button": "Obtenir un Devis",
       "services.cta.viewProducts": "Parcourir les Produits",
 
       // Features
