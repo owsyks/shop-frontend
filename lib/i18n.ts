@@ -180,6 +180,11 @@ const resources = {
       "checkout.successMessage": "Your order has been placed. We will call you to confirm.",
       "checkout.backToProducts": "Back to Products",
       "checkout.orderSummary": "Order Summary",
+      "checkout.title": "Checkout",
+      "checkout.subtitle": "Complete your order and we'll deliver it to you",
+      "checkout.personalInfo": "Personal Information",
+      "checkout.deliveryInfo": "Delivery Information",
+      "checkout.paymentInfo": "Payment Information",
 
       // Auth
       "auth.welcomeBack": "Welcome Back",
@@ -474,6 +479,11 @@ const resources = {
       "checkout.successMessage": "تم تأكيد طلبك. سنتصل بك لتأكيد التفاصيل.",
       "checkout.backToProducts": "العودة للمنتجات",
       "checkout.orderSummary": "ملخص الطلب",
+      "checkout.title": "الدفع",
+      "checkout.subtitle": "أكمل طلبك وسنقوم بتوصيله إليك",
+      "checkout.personalInfo": "المعلومات الشخصية",
+      "checkout.deliveryInfo": "معلومات التوصيل",
+      "checkout.paymentInfo": "معلومات الدفع",
 
       // Auth
       "auth.welcomeBack": "مرحباً بعودتك",
@@ -743,8 +753,10 @@ const resources = {
       "cart.quantity": "Quantité",
 
       // Checkout
-      "checkout.title": "Paiement",
-      "checkout.shippingInfo": "Informations de Livraison",
+      "checkout.title": "Commande",
+      "checkout.subtitle": "Complétez votre commande et nous vous la livrerons",
+      "checkout.personalInfo": "Informations Personnelles",
+      "checkout.deliveryInfo": "Informations de Livraison",
       "checkout.paymentInfo": "Informations de Paiement",
       "checkout.orderSummary": "Résumé de la Commande",
       "checkout.placeOrder": "Passer la Commande",

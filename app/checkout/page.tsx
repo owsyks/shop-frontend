@@ -16,6 +16,7 @@ import { useAuth } from "@/hooks/use-auth"
 import { Loader2, Truck, Shield, ArrowLeft, Banknote } from "lucide-react"
 import { ordersAPI } from "@/lib/api"
 import { algeriaWilayas, deliveryOptions, type Wilaya, type Commune } from "@/lib/algeria-data"
+import { useTranslation } from "react-i18next"
 
 interface CheckoutForm {
   fullName: string
@@ -28,6 +29,7 @@ interface CheckoutForm {
 }
 
 export default function CheckoutPage() {
+  const { t } = useTranslation()
   const { items, getTotalPrice, getTotalItems, clearCart } = useCart()
   const { user } = useAuth()
   const router = useRouter()
@@ -156,7 +158,7 @@ export default function CheckoutPage() {
       <div className="container mx-auto px-4 py-16">
         <div className="max-w-2xl mx-auto text-center">
           <Loader2 className="h-12 w-12 animate-spin mx-auto mb-4" />
-          <p>Loading...</p>
+          <p>{t("common.loading")}</p>
         </div>
       </div>
     )
@@ -169,8 +171,8 @@ export default function CheckoutPage() {
           <div className="w-24 h-24 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
             <Shield className="h-12 w-12 text-green-600" />
           </div>
-          <h1 className="text-3xl font-bold mb-4">Order Placed Successfully!</h1>
-          <p className="text-muted-foreground mb-4">Your order has been placed. We will call you to confirm.</p>
+          <h1 className="text-3xl font-bold mb-4">{t("checkout.success")}</h1>
+          <p className="text-muted-foreground mb-4">{t("checkout.successMessage")}</p>
           <p className="text-sm text-gray-500 mb-8">Redirecting to your profile in 3 seconds...</p>
           <Button onClick={() => router.push("/profile")} className="bg-blue-600 hover:bg-blue-700">
             View Order History
@@ -187,12 +189,12 @@ export default function CheckoutPage() {
           {/* Back Button */}
           <Button variant="ghost" onClick={() => router.back()} className="mb-6">
             <ArrowLeft className="h-4 w-4 mr-2" />
-            Back to Cart
+            {t("common.back")}
           </Button>
 
           <div className="mb-12 text-center">
-            <h1 className="text-4xl font-bold text-gray-900 mb-4">Checkout</h1>
-            <p className="text-xl text-gray-600">Complete your order and we'll deliver it to you</p>
+            <h1 className="text-4xl font-bold text-gray-900 mb-4">{t("checkout.title")}</h1>
+            <p className="text-xl text-gray-600">{t("checkout.subtitle")}</p>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
@@ -210,7 +212,7 @@ export default function CheckoutPage() {
                   <CardHeader>
                     <CardTitle className="flex items-center">
                       <Banknote className="h-5 w-5 mr-2" />
-                      Personal Information
+                      {t("checkout.personalInfo")}
                     </CardTitle>
                   </CardHeader>
                   <CardContent className="space-y-4">
