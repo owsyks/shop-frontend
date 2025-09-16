@@ -21,6 +21,7 @@ export function Header() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [categoriesOpen, setCategoriesOpen] = useState(false)
   const [hoverTimeout, setHoverTimeout] = useState<NodeJS.Timeout | null>(null)
+  const [expandedCategories, setExpandedCategories] = useState<Set<number>>(new Set())
   const { t } = useTranslation()
   const router = useRouter()
 
@@ -126,6 +127,16 @@ export function Header() {
     if (searchQuery.trim()) {
       router.push(`/products?search=${encodeURIComponent(searchQuery.trim())}`)
     }
+  }
+
+  const toggleCategory = (index: number) => {
+    const newExpanded = new Set(expandedCategories)
+    if (newExpanded.has(index)) {
+      newExpanded.delete(index)
+    } else {
+      newExpanded.add(index)
+    }
+    setExpandedCategories(newExpanded)
   }
 
   return (
@@ -321,26 +332,37 @@ export function Header() {
                   </div>
                   {categories.map((category, index) => {
                     const IconComponent = category.icon
+                    const isExpanded = expandedCategories.has(index)
                     return (
                       <div key={index} className="ml-4 space-y-1">
-                        <Link 
-                          href={category.href}
-                          className="flex items-center space-x-2 text-foreground hover:text-blue-600 transition-colors duration-300 py-1 font-medium"
-                        >
-                          <IconComponent className="h-4 w-4 text-blue-600" />
-                          <span>{category.name}</span>
-                        </Link>
-                        <div className="ml-6 space-y-1">
-                          {category.subcategories.map((subcategory, subIndex) => (
-                            <Link
-                              key={subIndex}
-                              href={subcategory.href}
-                              className="block text-sm text-gray-600 hover:text-blue-600 transition-colors duration-300 py-1"
-                            >
-                              {subcategory.name}
-                            </Link>
-                          ))}
+                        <div className="flex items-center justify-between">
+                          <Link 
+                            href={category.href}
+                            className="flex items-center space-x-2 text-foreground hover:text-blue-600 transition-colors duration-300 py-1 font-medium"
+                          >
+                            <IconComponent className="h-4 w-4 text-blue-600" />
+                            <span>{category.name}</span>
+                          </Link>
+                          <button
+                            onClick={() => toggleCategory(index)}
+                            className="p-1 hover:bg-gray-100 rounded transition-colors duration-200"
+                          >
+                            <ChevronDown className={`h-4 w-4 text-gray-500 transition-transform duration-200 ${isExpanded ? 'rotate-180' : ''}`} />
+                          </button>
                         </div>
+                        {isExpanded && (
+                          <div className="ml-6 space-y-1">
+                            {category.subcategories.map((subcategory, subIndex) => (
+                              <Link
+                                key={subIndex}
+                                href={subcategory.href}
+                                className="block text-sm text-gray-600 hover:text-blue-600 transition-colors duration-300 py-1"
+                              >
+                                {subcategory.name}
+                              </Link>
+                            ))}
+                          </div>
+                        )}
                       </div>
                     )
                   })}
