@@ -66,13 +66,13 @@ export default function CartPage() {
               <CardHeader className="flex flex-row items-center justify-between">
                 <CardTitle>{t("cart.title")}</CardTitle>
                 <Button
-                  variant="ghost"
+                  variant="destructive"
                   size="sm"
                   onClick={handleClearCart}
                   disabled={isClearing}
-                  className="text-destructive hover:text-destructive"
+                  className="text-white hover:bg-red-600"
                 >
-                  {isClearing ? t("common.loading") : t("cart.clearCart")}
+                  {isClearing ? t("common.loading") : t("cart.clearAll")}
                 </Button>
               </CardHeader>
               <CardContent className="space-y-4">
