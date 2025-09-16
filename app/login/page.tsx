@@ -144,7 +144,7 @@ export default function LoginPage() {
               <p className="text-sm text-muted-foreground">
                 {t("auth.noAccount")}{" "}
                 <Link href="/register" className="text-blue-600 hover:text-blue-700 font-medium underline">
-                  {t("auth.signup")}
+                  {t("auth.signUp")}
                 </Link>
               </p>
             </div>
