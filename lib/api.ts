@@ -346,6 +346,8 @@ export const ordersAPI = {
     items: Array<{ product_id: number; quantity: number }>
     delivery_address: string
     delivery_state: string
+    delivery_commune?: string
+    delivery_type?: string
     phone_number: string
     payment_method?: string
   }) => {
