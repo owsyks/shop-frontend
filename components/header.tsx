@@ -177,25 +177,25 @@ export function Header() {
               
               {/* Mega Menu Dropdown */}
               {categoriesOpen && (
-                <div className="absolute top-full left-0 mt-2 w-96 bg-white rounded-lg shadow-xl border border-gray-200 z-50 overflow-hidden">
-                  <div className="grid grid-cols-2 gap-0">
+                <div className="absolute top-full left-0 mt-2 w-80 max-w-[90vw] bg-white rounded-lg shadow-xl border border-gray-200 z-50 overflow-hidden">
+                  <div className="grid grid-cols-1 gap-0">
                     {categories.map((category, index) => {
                       const IconComponent = category.icon
                       return (
-                        <div key={index} className="p-4 hover:bg-gray-50 transition-colors duration-200">
+                        <div key={index} className="p-3 hover:bg-gray-50 transition-colors duration-200">
                           <Link 
                             href={category.href}
                             className="flex items-center space-x-3 text-gray-900 hover:text-blue-600 transition-colors duration-200 group"
                           >
-                            <IconComponent className="h-5 w-5 text-blue-600 group-hover:scale-110 transition-transform duration-200" />
-                            <span className="font-semibold">{category.name}</span>
+                            <IconComponent className="h-4 w-4 text-blue-600 group-hover:scale-110 transition-transform duration-200" />
+                            <span className="font-semibold text-sm">{category.name}</span>
                           </Link>
-                          <div className="mt-2 space-y-1">
+                          <div className="mt-1 space-y-1">
                             {category.subcategories.map((subcategory, subIndex) => (
                               <Link
                                 key={subIndex}
                                 href={subcategory.href}
-                                className="block text-sm text-gray-600 hover:text-blue-600 transition-colors duration-200 py-1 pl-8"
+                                className="block text-xs text-gray-600 hover:text-blue-600 transition-colors duration-200 py-1 pl-7"
                               >
                                 {subcategory.name}
                               </Link>
@@ -207,13 +207,13 @@ export function Header() {
                   </div>
                   
                   {/* View All Products Link */}
-                  <div className="border-t bg-gray-50 p-4">
+                  <div className="border-t bg-gray-50 p-3">
                     <Link 
                       href="/products"
-                      className="flex items-center justify-center space-x-2 text-blue-600 hover:text-blue-700 font-semibold transition-colors duration-200"
+                      className="flex items-center justify-center space-x-2 text-blue-600 hover:text-blue-700 font-semibold text-sm transition-colors duration-200"
                     >
                       <span>{t("categories.viewAll")}</span>
-                      <ChevronDown className="h-4 w-4 rotate-[-90deg]" />
+                      <ChevronDown className="h-3 w-3 rotate-[-90deg]" />
                     </Link>
                   </div>
                 </div>
