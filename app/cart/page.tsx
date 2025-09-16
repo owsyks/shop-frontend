@@ -70,7 +70,7 @@ export default function CartPage() {
                   size="sm"
                   onClick={handleClearCart}
                   disabled={isClearing}
-                  className="text-white hover:bg-red-600"
+                  className="bg-red-600 text-white hover:bg-red-700 font-medium"
                 >
                   {isClearing ? t("common.loading") : t("cart.clearAll")}
                 </Button>
