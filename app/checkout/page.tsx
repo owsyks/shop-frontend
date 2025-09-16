@@ -131,10 +131,10 @@ export default function CheckoutPage() {
       if (result) {
         setSuccess(true)
         clearCart()
-        // Redirect to profile after a delay
+        // Redirect to profile after a shorter delay
         setTimeout(() => {
           router.push("/profile")
-        }, 5000)
+        }, 3000)
       } else {
         setError("Failed to place order. Please try again.")
       }
@@ -170,8 +170,11 @@ export default function CheckoutPage() {
             <Shield className="h-12 w-12 text-green-600" />
           </div>
           <h1 className="text-3xl font-bold mb-4">Order Placed Successfully!</h1>
-          <p className="text-muted-foreground mb-8">Your order has been placed. We will call you to confirm.</p>
-          <Button onClick={() => router.push("/profile")}>View Order History</Button>
+          <p className="text-muted-foreground mb-4">Your order has been placed. We will call you to confirm.</p>
+          <p className="text-sm text-gray-500 mb-8">Redirecting to your profile in 3 seconds...</p>
+          <Button onClick={() => router.push("/profile")} className="bg-blue-600 hover:bg-blue-700">
+            View Order History
+          </Button>
         </div>
       </div>
     )
