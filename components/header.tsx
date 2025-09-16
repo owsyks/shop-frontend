@@ -192,26 +192,37 @@ export function Header() {
                   <div className="grid grid-cols-1 gap-0">
                     {categories.map((category, index) => {
                       const IconComponent = category.icon
+                      const isExpanded = expandedCategories.has(index)
                       return (
                         <div key={index} className="p-3 hover:bg-gray-50 transition-colors duration-200">
-                          <Link 
-                            href={category.href}
-                            className="flex items-center space-x-3 text-gray-900 hover:text-blue-600 transition-colors duration-200 group"
-                          >
-                            <IconComponent className="h-4 w-4 text-blue-600 group-hover:scale-110 transition-transform duration-200" />
-                            <span className="font-semibold text-sm">{category.name}</span>
-                          </Link>
-                          <div className="mt-1 space-y-1">
-                            {category.subcategories.map((subcategory, subIndex) => (
-                              <Link
-                                key={subIndex}
-                                href={subcategory.href}
-                                className="block text-xs text-gray-600 hover:text-blue-600 transition-colors duration-200 py-1 pl-7"
-                              >
-                                {subcategory.name}
-                              </Link>
-                            ))}
+                          <div className="flex items-center justify-between">
+                            <Link 
+                              href={category.href}
+                              className="flex items-center space-x-3 text-gray-900 hover:text-blue-600 transition-colors duration-200 group"
+                            >
+                              <IconComponent className="h-4 w-4 text-blue-600 group-hover:scale-110 transition-transform duration-200" />
+                              <span className="font-semibold text-sm">{category.name}</span>
+                            </Link>
+                            <button
+                              onClick={() => toggleCategory(index)}
+                              className="p-1 hover:bg-gray-100 rounded transition-colors duration-200"
+                            >
+                              <ChevronDown className={`h-4 w-4 text-gray-500 transition-transform duration-200 ${isExpanded ? 'rotate-180' : ''}`} />
+                            </button>
                           </div>
+                          {isExpanded && (
+                            <div className="mt-1 space-y-1">
+                              {category.subcategories.map((subcategory, subIndex) => (
+                                <Link
+                                  key={subIndex}
+                                  href={subcategory.href}
+                                  className="block text-xs text-gray-600 hover:text-blue-600 transition-colors duration-200 py-1 pl-7"
+                                >
+                                  {subcategory.name}
+                                </Link>
+                              ))}
+                            </div>
+                          )}
                         </div>
                       )
                     })}
