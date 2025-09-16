@@ -24,6 +24,20 @@ export function Header() {
   const { t } = useTranslation()
   const router = useRouter()
 
+  // Prevent body scroll when mobile menu is open
+  useEffect(() => {
+    if (mobileMenuOpen) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = 'unset'
+    }
+    
+    // Cleanup on unmount
+    return () => {
+      document.body.style.overflow = 'unset'
+    }
+  }, [mobileMenuOpen])
+
   // Category data with icons and subcategories - using correct category IDs
   const categories = [
     {
@@ -285,95 +299,161 @@ export function Header() {
           </div>
         </div>
 
-        {/* Mobile Menu */}
+        {/* Mobile Sidebar Overlay */}
         {mobileMenuOpen && (
-          <div className="md:hidden border-t py-4 bg-background/95 backdrop-blur-md">
-            <div className="flex flex-col space-y-4">
-              {/* Mobile Search */}
-              <form onSubmit={handleSearch} className="flex items-center space-x-2">
-                <div className="relative flex-1">
-                  <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
-                  <Input
-                    type="search"
-                    placeholder={t("products.searchPlaceholder")}
-                    value={searchQuery}
-                    onChange={(e) => setSearchQuery(e.target.value)}
-                    className="pl-10 rounded-lg border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-300"
-                  />
-                </div>
-              </form>
-
-              {/* Mobile Navigation */}
-              <nav className="flex flex-col space-y-2">
-                <Link href="/" className="text-foreground hover:text-blue-600 transition-colors duration-300 py-2 font-medium">
-                  {t("nav.home")}
-                </Link>
-                
-                {/* Services Link */}
-                <Link href="/services" className="text-foreground hover:text-blue-600 transition-colors duration-300 py-2 font-medium">
-                  {t("nav.services")}
-                </Link>
-                
-                {/* Mobile Categories */}
-                <div className="space-y-2">
-                  <div className="text-sm font-semibold text-gray-500 uppercase tracking-wide">
-                    {t("nav.products")}
+          <>
+            {/* Backdrop */}
+            <div 
+              className="fixed inset-0 bg-black/50 z-40 md:hidden"
+              onClick={() => setMobileMenuOpen(false)}
+            />
+            
+            {/* Sidebar */}
+            <div className="fixed top-0 left-0 h-full w-80 max-w-[85vw] bg-white z-50 md:hidden transform transition-transform duration-300 ease-in-out shadow-xl">
+              <div className="flex flex-col h-full">
+                {/* Header */}
+                <div className="flex items-center justify-between p-4 border-b border-gray-200">
+                  <div className="flex items-center space-x-3">
+                    <div className="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center">
+                      <span className="text-white font-bold text-sm">M</span>
+                    </div>
+                    <span className="text-xl font-bold text-blue-600">Marketo</span>
                   </div>
-                  {categories.map((category, index) => {
-                    const IconComponent = category.icon
-                    return (
-                      <div key={index} className="ml-4 space-y-1">
-                        <Link 
-                          href={category.href}
-                          className="flex items-center space-x-2 text-foreground hover:text-blue-600 transition-colors duration-300 py-1 font-medium"
-                        >
-                          <IconComponent className="h-4 w-4 text-blue-600" />
-                          <span>{category.name}</span>
-                        </Link>
-                        <div className="ml-6 space-y-1">
-                          {category.subcategories.map((subcategory, subIndex) => (
-                            <Link
-                              key={subIndex}
-                              href={subcategory.href}
-                              className="block text-sm text-gray-600 hover:text-blue-600 transition-colors duration-300 py-1"
-                            >
-                              {subcategory.name}
-                            </Link>
-                          ))}
-                        </div>
-                      </div>
-                    )
-                  })}
-                  <Link href="/products" className="ml-4 text-blue-600 hover:text-blue-700 transition-colors duration-300 py-1 font-medium">
-                    {t("categories.viewAll")}
-                  </Link>
+                  <div className="flex items-center space-x-2">
+                    <LanguageSwitcher />
+                    <Button variant="ghost" size="sm" onClick={() => setMobileMenuOpen(false)}>
+                      <X className="h-5 w-5" />
+                    </Button>
+                  </div>
                 </div>
-                
-                {user ? (
-                  <>
-                    <Link href="/profile" className="text-foreground hover:text-blue-600 transition-colors duration-300 py-2 font-medium">
-                      {t("nav.profile")}
-                    </Link>
-                    <button
-                      onClick={logout}
-                      className="text-left text-foreground hover:text-blue-600 transition-colors duration-300 py-2 font-medium"
-                    >
-                      {t("nav.logout")}
-                    </button>
-                  </>
-                ) : (
-                  <>
-                    <Link href="/login" className="text-foreground hover:text-blue-600 transition-colors duration-300 py-2 font-medium">
-                      {t("nav.login")}
-                    </Link>
-                    <Link href="/register" className="text-foreground hover:text-blue-600 transition-colors duration-300 py-2 font-medium">
-                      {t("nav.signup")}
-                    </Link>
-                  </>
-                )}
-              </nav>
+
+                {/* Search Bar */}
+                <div className="p-4 border-b border-gray-200">
+                  <form onSubmit={handleSearch}>
+                    <div className="relative">
+                      <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4" />
+                      <Input
+                        type="search"
+                        placeholder={t("products.searchPlaceholder")}
+                        value={searchQuery}
+                        onChange={(e) => setSearchQuery(e.target.value)}
+                        className="pl-10 rounded-lg border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200"
+                      />
+                    </div>
+                  </form>
+                </div>
+
+                {/* Navigation Content */}
+                <div className="flex-1 overflow-y-auto">
+                  <nav className="p-4 space-y-6">
+                    {/* Main Navigation */}
+                    <div className="space-y-2">
+                      <Link 
+                        href="/" 
+                        className="flex items-center py-3 text-gray-700 hover:text-blue-600 transition-colors duration-200 font-medium"
+                        onClick={() => setMobileMenuOpen(false)}
+                      >
+                        {t("nav.home")}
+                      </Link>
+                      <Link 
+                        href="/services" 
+                        className="flex items-center py-3 text-gray-700 hover:text-blue-600 transition-colors duration-200 font-medium"
+                        onClick={() => setMobileMenuOpen(false)}
+                      >
+                        {t("nav.services")}
+                      </Link>
+                    </div>
+
+                    {/* Products Section */}
+                    <div className="space-y-3">
+                      <div className="text-sm font-semibold text-gray-500 uppercase tracking-wide">
+                        {t("nav.products")}
+                      </div>
+                      
+                      {categories.map((category, index) => {
+                        const IconComponent = category.icon
+                        return (
+                          <div key={index} className="space-y-2">
+                            <Link 
+                              href={category.href}
+                              className="flex items-center space-x-3 py-2 text-gray-700 hover:text-blue-600 transition-colors duration-200 font-medium"
+                              onClick={() => setMobileMenuOpen(false)}
+                            >
+                              <IconComponent className="h-5 w-5 text-blue-600" />
+                              <span>{category.name}</span>
+                            </Link>
+                            
+                            {/* Subcategories */}
+                            <div className="ml-8 space-y-1">
+                              {category.subcategories.map((subcategory, subIndex) => (
+                                <Link
+                                  key={subIndex}
+                                  href={subcategory.href}
+                                  className="block py-2 text-sm text-gray-600 hover:text-blue-600 transition-colors duration-200"
+                                  onClick={() => setMobileMenuOpen(false)}
+                                >
+                                  {subcategory.name}
+                                </Link>
+                              ))}
+                            </div>
+                          </div>
+                        )
+                      })}
+                      
+                      <Link 
+                        href="/products" 
+                        className="flex items-center py-2 text-blue-600 hover:text-blue-700 transition-colors duration-200 font-medium"
+                        onClick={() => setMobileMenuOpen(false)}
+                      >
+                        {t("categories.viewAll")}
+                      </Link>
+                    </div>
+
+                    {/* User Actions */}
+                    <div className="pt-4 border-t border-gray-200">
+                      {user ? (
+                        <div className="space-y-2">
+                          <Link 
+                            href="/profile" 
+                            className="flex items-center py-3 text-gray-700 hover:text-blue-600 transition-colors duration-200 font-medium"
+                            onClick={() => setMobileMenuOpen(false)}
+                          >
+                            {t("nav.profile")}
+                          </Link>
+                          <button
+                            onClick={() => {
+                              logout()
+                              setMobileMenuOpen(false)
+                            }}
+                            className="flex items-center py-3 text-gray-700 hover:text-blue-600 transition-colors duration-200 font-medium w-full text-left"
+                          >
+                            {t("nav.logout")}
+                          </button>
+                        </div>
+                      ) : (
+                        <div className="space-y-2">
+                          <Link 
+                            href="/login" 
+                            className="flex items-center py-3 text-gray-700 hover:text-blue-600 transition-colors duration-200 font-medium"
+                            onClick={() => setMobileMenuOpen(false)}
+                          >
+                            {t("nav.login")}
+                          </Link>
+                          <Link 
+                            href="/register" 
+                            className="flex items-center py-3 text-gray-700 hover:text-blue-600 transition-colors duration-200 font-medium"
+                            onClick={() => setMobileMenuOpen(false)}
+                          >
+                            {t("nav.signup")}
+                          </Link>
+                        </div>
+                      )}
+                    </div>
+                  </nav>
+                </div>
+              </div>
             </div>
-          </div>
+          </>
         )}
       </div>
     </header>
