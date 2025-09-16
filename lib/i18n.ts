@@ -1,0 +1,611 @@
+import i18n from "i18next"
+import { initReactI18next } from "react-i18next"
+import LanguageDetector from "i18next-browser-languagedetector"
+
+// Translation resources
+const resources = {
+  en: {
+    translation: {
+      // Navigation
+      "nav.home": "Home",
+      "nav.products": "Products",
+      "nav.delivery": "Delivery",
+      "nav.login": "Login",
+      "nav.signup": "Sign Up",
+      "nav.logout": "Logout",
+      "nav.profile": "Profile",
+      "nav.cart": "Cart",
+
+      // Category Navigation
+      "categories.electronics": "Electronics",
+      "categories.fashion": "Fashion",
+      "categories.homeKitchen": "Home & Kitchen",
+      "categories.sportsGaming": "Sports & Gaming",
+      "categories.automotive": "Automotive",
+      "categories.booksOffice": "Books & Office",
+      "categories.viewAll": "View All Products",
+      
+      // Electronics Subcategories
+      "categories.electronics.smartphones": "Smartphones & Tablets",
+      "categories.electronics.laptops": "Laptops & Computers",
+      "categories.electronics.audio": "Audio & Headphones",
+      "categories.electronics.cameras": "Cameras & Accessories",
+      "categories.electronics.gaming": "Gaming Consoles",
+      
+      // Fashion Subcategories
+      "categories.fashion.mens": "Men's Clothing",
+      "categories.fashion.womens": "Women's Clothing",
+      "categories.fashion.shoes": "Shoes",
+      "categories.fashion.bags": "Bags & Accessories",
+      "categories.fashion.watches": "Watches & Jewelry",
+      
+      // Home & Kitchen Subcategories
+      "categories.homeKitchen.appliances": "Appliances",
+      "categories.homeKitchen.kitchenware": "Kitchenware",
+      "categories.homeKitchen.furniture": "Furniture",
+      "categories.homeKitchen.decor": "Home Décor",
+      "categories.homeKitchen.lighting": "Lighting",
+      
+      // Sports & Gaming Subcategories
+      "categories.sportsGaming.gym": "Gym Equipment",
+      "categories.sportsGaming.sportswear": "Sportswear",
+      "categories.sportsGaming.camping": "Camping & Hiking",
+      "categories.sportsGaming.bicycles": "Bicycles",
+      "categories.sportsGaming.gaming": "Gaming Accessories",
+      
+      // Automotive Subcategories
+      "categories.automotive.car": "Car Accessories",
+      "categories.automotive.motorbike": "Motorbike Accessories",
+      "categories.automotive.oils": "Oils & Fluids",
+      "categories.automotive.tools": "Tools & Equipment",
+      
+      // Books & Office Subcategories
+      "categories.booksOffice.printers": "Printers & Ink",
+      "categories.booksOffice.furniture": "Office Furniture",
+      "categories.booksOffice.school": "School Supplies",
+      "categories.booksOffice.stationery": "Stationery",
+
+      // Homepage
+      "hero.title": "Discover Amazing Products",
+      "hero.subtitle":
+        "Shop the latest trends and find everything you need in one place. Quality products, fast delivery, and excellent customer service.",
+      "hero.shopNow": "Shop Now",
+      "hero.delivery": "Delivery",
+
+      // Features
+      "features.shipping.title": "Fast Shipping",
+      "features.shipping.desc": "Fast shipping within 1-3 days",
+      "features.payment.title": "Secure Payment",
+      "features.payment.desc": "Your payment information is safe with us",
+      "features.support.title": "24/7 Support",
+      "features.support.desc": "Get help whenever you need it",
+
+      // Products
+      "products.title": "Featured Products",
+      "products.subtitle": "Check out our most popular items",
+      "products.viewAll": "View All Products",
+      "products.viewDetails": "View Details",
+      "products.addToCart": "Add to Cart",
+      "products.outOfStock": "Out of Stock",
+      "products.inStock": "In Stock",
+      "products.searchPlaceholder": "Search products...",
+      "products.allCategories": "All Categories",
+      "products.previous": "Previous",
+      "products.next": "Next",
+      "products.pageOf": "Page {{current}} of {{total}}",
+
+      // Cart
+      "cart.title": "Shopping Cart",
+      "cart.empty": "Your cart is empty",
+      "cart.startShopping": "Start Shopping",
+      "cart.items": "Items in your cart",
+      "cart.clearAll": "Clear all",
+      "cart.continueShopping": "Continue Shopping",
+      "cart.proceedCheckout": "Proceed to Checkout",
+      "cart.orderSummary": "Order Summary",
+      "cart.subtotal": "Subtotal",
+      "cart.shipping": "Shipping",
+      "cart.tax": "Tax",
+      "cart.total": "Total",
+      "cart.freeShipping": "Free shipping on orders over 5000 DA",
+      "cart.secureCheckout": "Secure checkout with SSL encryption",
+
+      // Checkout
+      "checkout.title": "Checkout",
+      "checkout.backToCart": "Back to Cart",
+      "checkout.contactInfo": "Contact Information",
+      "checkout.deliveryAddress": "Delivery Address",
+      "checkout.paymentMethod": "Payment Method",
+      "checkout.fullName": "Full Name",
+      "checkout.email": "Email",
+      "checkout.phone": "Phone Number",
+      "checkout.address": "Delivery Address",
+      "checkout.wilaya": "Wilaya",
+      "checkout.selectWilaya": "Select your wilaya",
+      "checkout.cashOnDelivery": "Cash on Delivery",
+      "checkout.cashDesc": "Pay when your order is delivered to your door",
+      "checkout.placeOrder": "Place Order",
+      "checkout.processing": "Processing Order...",
+      "checkout.success": "Order Placed Successfully!",
+      "checkout.successMessage": "Your order has been placed. We will call you to confirm.",
+      "checkout.backToProducts": "Back to Products",
+
+      // Auth
+      "auth.welcomeBack": "Welcome Back",
+      "auth.signInDesc": "Sign in to your account to continue shopping",
+      "auth.createAccount": "Create Account",
+      "auth.joinUs": "Join us and start shopping today",
+      "auth.email": "Email",
+      "auth.password": "Password",
+      "auth.confirmPassword": "Confirm Password",
+      "auth.firstName": "First Name",
+      "auth.lastName": "Last Name",
+      "auth.signIn": "Sign In",
+      "auth.signUp": "Sign Up",
+      "auth.signingIn": "Signing In...",
+      "auth.creatingAccount": "Creating Account...",
+      "auth.noAccount": "Don't have an account? Sign up here",
+      "auth.hasAccount": "Already have an account? Sign in here",
+      "auth.invalidCredentials": "Invalid email or password. Please try again.",
+      "auth.passwordMismatch": "Passwords do not match",
+      "auth.passwordLength": "Password must be at least 6 characters long",
+
+      // Profile
+      "profile.signOut": "Sign Out",
+      "profile.orderHistory": "Order History",
+      "profile.orderHistoryDesc": "View your recent orders and their status",
+      "profile.noOrders": "No orders found",
+      "profile.viewDetails": "View Details",
+      "profile.status.pending": "Pending",
+      "profile.status.processing": "Processing",
+      "profile.status.shipped": "Shipped",
+      "profile.status.delivered": "Delivered",
+
+      // Footer
+      "footer.description":
+        "Your trusted online shopping destination in Algeria. Quality products, fast delivery, and excellent customer service.",
+      "footer.quickLinks": "Quick Links",
+      "footer.customerService": "Customer Service",
+      "footer.newsletter": "Newsletter",
+      "footer.products": "Products",
+      "footer.aboutUs": "About Us",
+      "footer.contact": "Contact",
+      "footer.helpCenter": "Help Center",
+      "footer.returns": "Returns",
+      "footer.shippingInfo": "Shipping Info",
+      "footer.newsletterDesc": "Subscribe to get updates on new products and special offers",
+      "footer.emailPlaceholder": "Enter your email",
+      "footer.subscribe": "Subscribe",
+      "footer.copyright": "© 2025 Marketo. All rights reserved. Made with ❤️ for amazing shopping experiences.",
+      "footer.allProducts": "All Products",
+      "footer.faq": "FAQ",
+      "footer.returnsExchanges": "Returns & Exchanges",
+      "footer.contactInfo": "Contact Info",
+      "footer.termsOfService": "Terms of Service",
+      "footer.cookiePolicy": "Cookie Policy",
+      "footer.privacy": "Privacy Policy",
+
+      // Common
+      "common.back": "Back",
+      "common.quantity": "Quantity",
+      "common.description": "Description",
+      "common.features": "Features",
+      "common.productNotFound": "Product Not Found",
+      "common.loading": "Loading...",
+      "common.error": "Something went wrong. Please try again.",
+    },
+  },
+  ar: {
+    translation: {
+      // Navigation
+      "nav.home": "الرئيسية",
+      "nav.products": "المنتجات",
+      "nav.delivery": "التوصيل",
+      "nav.login": "تسجيل الدخول",
+      "nav.signup": "إنشاء حساب",
+      "nav.logout": "تسجيل الخروج",
+      "nav.profile": "الملف الشخصي",
+      "nav.cart": "السلة",
+
+      // Category Navigation
+      "categories.electronics": "الإلكترونيات",
+      "categories.fashion": "الموضة",
+      "categories.homeKitchen": "المنزل والمطبخ",
+      "categories.sportsGaming": "الرياضة والألعاب",
+      "categories.automotive": "السيارات",
+      "categories.booksOffice": "الكتب والمكتب",
+      "categories.viewAll": "عرض جميع المنتجات",
+      
+      // Electronics Subcategories
+      "categories.electronics.smartphones": "الهواتف الذكية والأجهزة اللوحية",
+      "categories.electronics.laptops": "أجهزة الكمبيوتر المحمولة",
+      "categories.electronics.audio": "الصوت والسماعات",
+      "categories.electronics.cameras": "الكاميرات والملحقات",
+      "categories.electronics.gaming": "أجهزة الألعاب",
+      
+      // Fashion Subcategories
+      "categories.fashion.mens": "ملابس الرجال",
+      "categories.fashion.womens": "ملابس النساء",
+      "categories.fashion.shoes": "الأحذية",
+      "categories.fashion.bags": "الحقائب والملحقات",
+      "categories.fashion.watches": "الساعات والمجوهرات",
+      
+      // Home & Kitchen Subcategories
+      "categories.homeKitchen.appliances": "الأجهزة المنزلية",
+      "categories.homeKitchen.kitchenware": "أدوات المطبخ",
+      "categories.homeKitchen.furniture": "الأثاث",
+      "categories.homeKitchen.decor": "ديكور المنزل",
+      "categories.homeKitchen.lighting": "الإضاءة",
+      
+      // Sports & Gaming Subcategories
+      "categories.sportsGaming.gym": "معدات الجيم",
+      "categories.sportsGaming.sportswear": "الملابس الرياضية",
+      "categories.sportsGaming.camping": "التخييم والمشي",
+      "categories.sportsGaming.bicycles": "الدراجات",
+      "categories.sportsGaming.gaming": "ملحقات الألعاب",
+      
+      // Automotive Subcategories
+      "categories.automotive.car": "ملحقات السيارات",
+      "categories.automotive.motorbike": "ملحقات الدراجات النارية",
+      "categories.automotive.oils": "الزيوت والسوائل",
+      "categories.automotive.tools": "الأدوات والمعدات",
+      
+      // Books & Office Subcategories
+      "categories.booksOffice.printers": "الطابعات والحبر",
+      "categories.booksOffice.furniture": "أثاث المكتب",
+      "categories.booksOffice.school": "مستلزمات المدرسة",
+      "categories.booksOffice.stationery": "الأدوات المكتبية",
+
+      // Homepage
+      "hero.title": "اكتشف منتجات مذهلة",
+      "hero.subtitle":
+        "تسوق أحدث الصيحات واعثر على كل ما تحتاجه في مكان واحد. منتجات عالية الجودة وتوصيل سريع وخدمة عملاء ممتازة.",
+      "hero.shopNow": "تسوق الآن",
+      "hero.delivery": "التوصيل",
+
+      // Features
+      "features.shipping.title": "شحن مجاني",
+      "features.shipping.desc": "توصيل مجاني للطلبات أكثر من 5000 دج",
+      "features.payment.title": "دفع آمن",
+      "features.payment.desc": "معلومات الدفع الخاصة بك آمنة معنا",
+      "features.support.title": "دعم 24/7",
+      "features.support.desc": "احصل على المساعدة متى احتجتها",
+
+      // Products
+      "products.title": "المنتجات المميزة",
+      "products.subtitle": "تحقق من أكثر منتجاتنا شعبية",
+      "products.viewAll": "عرض جميع المنتجات",
+      "products.viewDetails": "عرض التفاصيل",
+      "products.addToCart": "أضف إلى السلة",
+      "products.outOfStock": "نفد من المخزون",
+      "products.inStock": "متوفر",
+      "products.searchPlaceholder": "البحث عن المنتجات...",
+      "products.allCategories": "جميع الفئات",
+      "products.previous": "السابق",
+      "products.next": "التالي",
+      "products.pageOf": "صفحة {{current}} من {{total}}",
+
+      // Cart
+      "cart.title": "سلة التسوق",
+      "cart.empty": "سلتك فارغة",
+      "cart.startShopping": "ابدأ التسوق",
+      "cart.items": "العناصر في سلتك",
+      "cart.clearAll": "مسح الكل",
+      "cart.continueShopping": "متابعة التسوق",
+      "cart.proceedCheckout": "المتابعة للدفع",
+      "cart.orderSummary": "ملخص الطلب",
+      "cart.subtotal": "المجموع الفرعي",
+      "cart.shipping": "الشحن",
+      "cart.tax": "الضريبة",
+      "cart.total": "المجموع",
+      "cart.freeShipping": "شحن مجاني للطلبات أكثر من 5000 دج",
+      "cart.secureCheckout": "دفع آمن مع تشفير SSL",
+
+      // Checkout
+      "checkout.title": "الدفع",
+      "checkout.backToCart": "العودة للسلة",
+      "checkout.contactInfo": "معلومات الاتصال",
+      "checkout.deliveryAddress": "عنوان التوصيل",
+      "checkout.paymentMethod": "طريقة الدفع",
+      "checkout.fullName": "الاسم الكامل",
+      "checkout.email": "البريد الإلكتروني",
+      "checkout.phone": "رقم الهاتف",
+      "checkout.address": "عنوان التوصيل",
+      "checkout.wilaya": "الولاية",
+      "checkout.selectWilaya": "اختر ولايتك",
+      "checkout.cashOnDelivery": "الدفع عند التسليم",
+      "checkout.cashDesc": "ادفع عند توصيل طلبك إلى بابك",
+      "checkout.placeOrder": "تأكيد الطلب",
+      "checkout.processing": "جاري معالجة الطلب...",
+      "checkout.success": "تم تأكيد الطلب بنجاح!",
+      "checkout.successMessage": "تم تأكيد طلبك. سنتصل بك لتأكيد التفاصيل.",
+      "checkout.backToProducts": "العودة للمنتجات",
+
+      // Auth
+      "auth.welcomeBack": "مرحباً بعودتك",
+      "auth.signInDesc": "سجل دخولك لحسابك لمتابعة التسوق",
+      "auth.createAccount": "إنشاء حساب",
+      "auth.joinUs": "انضم إلينا وابدأ التسوق اليوم",
+      "auth.email": "البريد الإلكتروني",
+      "auth.password": "كلمة المرور",
+      "auth.confirmPassword": "تأكيد كلمة المرور",
+      "auth.firstName": "الاسم الأول",
+      "auth.lastName": "اسم العائلة",
+      "auth.signIn": "تسجيل الدخول",
+      "auth.signUp": "إنشاء حساب",
+      "auth.signingIn": "جاري تسجيل الدخول...",
+      "auth.creatingAccount": "جاري إنشاء الحساب...",
+      "auth.noAccount": "ليس لديك حساب؟ أنشئ حساباً هنا",
+      "auth.hasAccount": "لديك حساب بالفعل؟ سجل دخولك هنا",
+      "auth.invalidCredentials": "بريد إلكتروني أو كلمة مرور غير صحيحة. حاول مرة أخرى.",
+      "auth.passwordMismatch": "كلمات المرور غير متطابقة",
+      "auth.passwordLength": "يجب أن تكون كلمة المرور 6 أحرف على الأقل",
+
+      // Profile
+      "profile.signOut": "تسجيل الخروج",
+      "profile.orderHistory": "تاريخ الطلبات",
+      "profile.orderHistoryDesc": "اعرض طلباتك الأخيرة وحالتها",
+      "profile.noOrders": "لا توجد طلبات",
+      "profile.viewDetails": "عرض التفاصيل",
+      "profile.status.pending": "في الانتظار",
+      "profile.status.processing": "قيد المعالجة",
+      "profile.status.shipped": "تم الشحن",
+      "profile.status.delivered": "تم التسليم",
+
+      // Footer
+      "footer.description":
+        "وجهتك الموثوقة للتسوق عبر الإنترنت في الجزائر. منتجات عالية الجودة وتوصيل سريع وخدمة عملاء ممتازة.",
+      "footer.quickLinks": "روابط سريعة",
+      "footer.customerService": "خدمة العملاء",
+      "footer.newsletter": "النشرة الإخبارية",
+      "footer.products": "المنتجات",
+      "footer.aboutUs": "من نحن",
+      "footer.contact": "اتصل بنا",
+      "footer.helpCenter": "مركز المساعدة",
+      "footer.returns": "المرتجعات",
+      "footer.shippingInfo": "معلومات الشحن",
+      "footer.newsletterDesc": "اشترك للحصول على تحديثات حول المنتجات الجديدة والعروض الخاصة",
+      "footer.emailPlaceholder": "أدخل بريدك الإلكتروني",
+      "footer.subscribe": "اشتراك",
+      "footer.copyright": "© 2025 ماركيتو. جميع الحقوق محفوظة. صنع بـ ❤️ لتجارب تسوق مذهلة.",
+      "footer.allProducts": "جميع المنتجات",
+      "footer.faq": "الأسئلة الشائعة",
+      "footer.returnsExchanges": "المرتجعات والاستبدال",
+      "footer.contactInfo": "معلومات الاتصال",
+      "footer.termsOfService": "شروط الخدمة",
+      "footer.cookiePolicy": "سياسة ملفات تعريف الارتباط",
+      "footer.privacy": "سياسة الخصوصية",
+
+      // Common
+      "common.back": "رجوع",
+      "common.quantity": "الكمية",
+      "common.description": "الوصف",
+      "common.features": "المميزات",
+      "common.productNotFound": "المنتج غير موجود",
+      "common.loading": "جاري التحميل...",
+      "common.error": "حدث خطأ ما. حاول مرة أخرى.",
+    },
+  },
+  fr: {
+    translation: {
+      // Navigation
+      "nav.home": "Accueil",
+      "nav.products": "Produits",
+      "nav.delivery": "Livraison",
+      "nav.login": "Connexion",
+      "nav.signup": "S'inscrire",
+      "nav.logout": "Déconnexion",
+      "nav.profile": "Profil",
+      "nav.cart": "Panier",
+
+      // Category Navigation
+      "categories.electronics": "Électronique",
+      "categories.fashion": "Mode",
+      "categories.homeKitchen": "Maison et Cuisine",
+      "categories.sportsGaming": "Sports et Jeux",
+      "categories.automotive": "Automobile",
+      "categories.booksOffice": "Livres et Bureau",
+      "categories.viewAll": "Voir Tous les Produits",
+      
+      // Electronics Subcategories
+      "categories.electronics.smartphones": "Smartphones et Tablettes",
+      "categories.electronics.laptops": "Ordinateurs Portables",
+      "categories.electronics.audio": "Audio et Casques",
+      "categories.electronics.cameras": "Caméras et Accessoires",
+      "categories.electronics.gaming": "Consoles de Jeu",
+      
+      // Fashion Subcategories
+      "categories.fashion.mens": "Vêtements Hommes",
+      "categories.fashion.womens": "Vêtements Femmes",
+      "categories.fashion.shoes": "Chaussures",
+      "categories.fashion.bags": "Sacs et Accessoires",
+      "categories.fashion.watches": "Montres et Bijoux",
+      
+      // Home & Kitchen Subcategories
+      "categories.homeKitchen.appliances": "Électroménager",
+      "categories.homeKitchen.kitchenware": "Ustensiles de Cuisine",
+      "categories.homeKitchen.furniture": "Mobilier",
+      "categories.homeKitchen.decor": "Décoration Maison",
+      "categories.homeKitchen.lighting": "Éclairage",
+      
+      // Sports & Gaming Subcategories
+      "categories.sportsGaming.gym": "Équipement de Gym",
+      "categories.sportsGaming.sportswear": "Vêtements de Sport",
+      "categories.sportsGaming.camping": "Camping et Randonnée",
+      "categories.sportsGaming.bicycles": "Vélos",
+      "categories.sportsGaming.gaming": "Accessoires de Jeu",
+      
+      // Automotive Subcategories
+      "categories.automotive.car": "Accessoires Auto",
+      "categories.automotive.motorbike": "Accessoires Moto",
+      "categories.automotive.oils": "Huiles et Fluides",
+      "categories.automotive.tools": "Outils et Équipement",
+      
+      // Books & Office Subcategories
+      "categories.booksOffice.printers": "Imprimantes et Encre",
+      "categories.booksOffice.furniture": "Mobilier de Bureau",
+      "categories.booksOffice.school": "Fournitures Scolaires",
+      "categories.booksOffice.stationery": "Papeterie",
+
+      // Homepage
+      "hero.title": "Découvrez des Produits Incroyables",
+      "hero.subtitle":
+        "Achetez les dernières tendances et trouvez tout ce dont vous avez besoin en un seul endroit. Produits de qualité, livraison rapide et excellent service client.",
+      "hero.shopNow": "Acheter Maintenant",
+      "hero.delivery": "Livraison",
+
+      // Features
+      "features.shipping.title": "Livraison Rapide",
+      "features.shipping.desc": "Livraison rapide en 1-3 jours",
+      "features.payment.title": "Paiement Sécurisé",
+      "features.payment.desc": "Vos informations de paiement sont sécurisées avec nous",
+      "features.support.title": "Support 24/7",
+      "features.support.desc": "Obtenez de l'aide quand vous en avez besoin",
+
+      // Products
+      "products.title": "Produits Vedettes",
+      "products.subtitle": "Découvrez nos articles les plus populaires",
+      "products.viewAll": "Voir Tous les Produits",
+      "products.viewDetails": "Voir les Détails",
+      "products.addToCart": "Ajouter au Panier",
+      "products.outOfStock": "Rupture de Stock",
+      "products.inStock": "En Stock",
+      "products.searchPlaceholder": "Rechercher des produits...",
+      "products.allCategories": "Toutes les Catégories",
+      "products.previous": "Précédent",
+      "products.next": "Suivant",
+      "products.pageOf": "Page {{current}} sur {{total}}",
+
+      // Cart
+      "cart.title": "Panier d'Achat",
+      "cart.empty": "Votre panier est vide",
+      "cart.subtotal": "Sous-total",
+      "cart.total": "Total",
+      "cart.checkout": "Procéder au Paiement",
+      "cart.continueShopping": "Continuer les Achats",
+      "cart.remove": "Supprimer",
+      "cart.quantity": "Quantité",
+
+      // Checkout
+      "checkout.title": "Paiement",
+      "checkout.shippingInfo": "Informations de Livraison",
+      "checkout.paymentInfo": "Informations de Paiement",
+      "checkout.orderSummary": "Résumé de la Commande",
+      "checkout.placeOrder": "Passer la Commande",
+      "checkout.firstName": "Prénom",
+      "checkout.lastName": "Nom de Famille",
+      "checkout.email": "Email",
+      "checkout.phone": "Téléphone",
+      "checkout.address": "Adresse",
+      "checkout.city": "Ville",
+      "checkout.postalCode": "Code Postal",
+      "checkout.country": "Pays",
+      "checkout.cardNumber": "Numéro de Carte",
+      "checkout.expiryDate": "Date d'Expiration",
+      "checkout.cvv": "CVV",
+      "checkout.cardholderName": "Nom du Titulaire",
+
+      // Auth
+      "auth.login": "Connexion",
+      "auth.register": "S'inscrire",
+      "auth.email": "Email",
+      "auth.password": "Mot de Passe",
+      "auth.confirmPassword": "Confirmer le Mot de Passe",
+      "auth.forgotPassword": "Mot de Passe Oublié ?",
+      "auth.rememberMe": "Se Souvenir de Moi",
+      "auth.loginSuccess": "Connexion réussie !",
+      "auth.registerSuccess": "Inscription réussie !",
+      "auth.logoutSuccess": "Déconnexion réussie !",
+      "auth.invalidCredentials": "Email ou mot de passe invalide",
+      "auth.emailExists": "L'email existe déjà",
+      "auth.passwordsNotMatch": "Les mots de passe ne correspondent pas",
+
+      // Profile
+      "profile.title": "Mon Profil",
+      "profile.personalInfo": "Informations Personnelles",
+      "profile.orderHistory": "Historique des Commandes",
+      "profile.settings": "Paramètres",
+      "profile.edit": "Modifier le Profil",
+      "profile.save": "Enregistrer les Modifications",
+      "profile.cancel": "Annuler",
+
+      // Orders
+      "orders.title": "Historique des Commandes",
+      "orders.noOrders": "Aucune commande trouvée",
+      "orders.orderNumber": "Commande #{{number}}",
+      "orders.orderDate": "Date de Commande",
+      "orders.status": "Statut",
+      "orders.total": "Total",
+      "orders.viewDetails": "Voir les Détails",
+      "orders.tracking": "Suivre la Commande",
+
+      // Contact
+      "contact.title": "Nous Contacter",
+      "contact.name": "Nom",
+      "contact.email": "Email",
+      "contact.subject": "Sujet",
+      "contact.message": "Message",
+      "contact.send": "Envoyer le Message",
+      "contact.success": "Message envoyé avec succès !",
+
+      // Footer
+      "footer.about": "À Propos",
+      "footer.contact": "Contact",
+      "footer.privacy": "Politique de Confidentialité",
+      "footer.terms": "Conditions de Service",
+      "footer.followUs": "Suivez-nous",
+      "footer.description": "Votre destination de shopping en ligne de confiance pour des produits de qualité à des prix imbattables. Découvrez des produits incroyables avec une livraison rapide et des paiements sécurisés.",
+      "footer.quickLinks": "Liens Rapides",
+      "footer.allProducts": "Tous les Produits",
+      "footer.aboutUs": "À Propos",
+      "footer.contactUs": "Nous Contacter",
+      "footer.faq": "FAQ",
+      "footer.customerService": "Service Client",
+      "footer.helpCenter": "Centre d'Aide",
+      "footer.returnsExchanges": "Retours et Échanges",
+      "footer.shippingInfo": "Informations de Livraison",
+      "footer.contactInfo": "Informations de Contact",
+      "footer.copyright": "© 2025 Marketo. Tous droits réservés. Fait avec ❤️ pour des expériences d'achat incroyables.",
+      "footer.termsOfService": "Conditions de Service",
+      "footer.cookiePolicy": "Politique des Cookies",
+
+      // Common
+      "common.loading": "Chargement...",
+      "common.error": "Une erreur s'est produite",
+      "common.success": "Succès !",
+      "common.cancel": "Annuler",
+      "common.confirm": "Confirmer",
+      "common.save": "Enregistrer",
+      "common.edit": "Modifier",
+      "common.delete": "Supprimer",
+      "common.back": "Retour",
+      "common.next": "Suivant",
+      "common.previous": "Précédent",
+      "common.close": "Fermer",
+      "common.yes": "Oui",
+      "common.no": "Non",
+    },
+  },
+}
+
+// Initialize i18n
+i18n
+  .use(LanguageDetector)
+  .use(initReactI18next)
+  .init({
+    resources,
+    fallbackLng: "en",
+    debug: false,
+    detection: {
+      order: ["localStorage", "navigator", "htmlTag"],
+      caches: ["localStorage"],
+    },
+    interpolation: {
+      escapeValue: false,
+    },
+    react: {
+      useSuspense: false,
+    },
+  })
+
+export default i18n
