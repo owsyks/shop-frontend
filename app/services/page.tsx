@@ -170,7 +170,7 @@ export default function ServicesPage() {
                       </Badge>
                     </div>
 
-                    <Button asChild variant="outline" className="w-full">
+                    <Button asChild className="w-full bg-blue-600 hover:bg-blue-700 text-white">
                       <Link href="/contact">
                         {t("services.contactUs")}
                       </Link>
