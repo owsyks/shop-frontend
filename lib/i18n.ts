@@ -205,11 +205,16 @@ const resources = {
       "profile.orderHistory": "Order History",
       "profile.orderHistoryDesc": "View your recent orders and their status",
       "profile.noOrders": "No orders found",
+      "profile.startShopping": "Start Shopping",
       "profile.viewDetails": "View Details",
       "profile.status.pending": "Pending",
       "profile.status.processing": "Processing",
       "profile.status.shipped": "Shipped",
       "profile.status.delivered": "Delivered",
+      "profile.status.cancelled": "Cancelled",
+      "profile.status.paid": "Paid",
+      "profile.item": "item",
+      "profile.items": "items",
 
       // Footer
       "footer.description":
@@ -447,11 +452,16 @@ const resources = {
       "profile.orderHistory": "تاريخ الطلبات",
       "profile.orderHistoryDesc": "اعرض طلباتك الأخيرة وحالتها",
       "profile.noOrders": "لا توجد طلبات",
+      "profile.startShopping": "ابدأ التسوق",
       "profile.viewDetails": "عرض التفاصيل",
       "profile.status.pending": "في الانتظار",
       "profile.status.processing": "قيد المعالجة",
       "profile.status.shipped": "تم الشحن",
       "profile.status.delivered": "تم التسليم",
+      "profile.status.cancelled": "ملغي",
+      "profile.status.paid": "مدفوع",
+      "profile.item": "عنصر",
+      "profile.items": "عناصر",
 
       // Footer
       "footer.description":
@@ -673,23 +683,20 @@ const resources = {
       "auth.passwordsNotMatch": "Les mots de passe ne correspondent pas",
 
       // Profile
-      "profile.title": "Mon Profil",
-      "profile.personalInfo": "Informations Personnelles",
+      "profile.signOut": "Se Déconnecter",
       "profile.orderHistory": "Historique des Commandes",
-      "profile.settings": "Paramètres",
-      "profile.edit": "Modifier le Profil",
-      "profile.save": "Enregistrer les Modifications",
-      "profile.cancel": "Annuler",
-
-      // Orders
-      "orders.title": "Historique des Commandes",
-      "orders.noOrders": "Aucune commande trouvée",
-      "orders.orderNumber": "Commande #{{number}}",
-      "orders.orderDate": "Date de Commande",
-      "orders.status": "Statut",
-      "orders.total": "Total",
-      "orders.viewDetails": "Voir les Détails",
-      "orders.tracking": "Suivre la Commande",
+      "profile.orderHistoryDesc": "Consultez vos commandes récentes et leur statut",
+      "profile.noOrders": "Aucune commande trouvée",
+      "profile.startShopping": "Commencer à Acheter",
+      "profile.viewDetails": "Voir les Détails",
+      "profile.status.pending": "En Attente",
+      "profile.status.processing": "En Traitement",
+      "profile.status.shipped": "Expédié",
+      "profile.status.delivered": "Livré",
+      "profile.status.cancelled": "Annulé",
+      "profile.status.paid": "Payé",
+      "profile.item": "article",
+      "profile.items": "articles",
 
       // Contact
       "contact.title": "Nous Contacter",

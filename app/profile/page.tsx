@@ -10,6 +10,7 @@ import { useAuth } from "@/hooks/use-auth"
 import { Loader2, Package, User, Mail } from "lucide-react"
 import { ordersAPI } from "@/lib/api"
 import OrderDetails from "@/components/order-details"
+import { useTranslation } from "react-i18next"
 
 interface Order {
   id: number
@@ -49,6 +50,7 @@ export default function ProfilePage() {
   const [orders, setOrders] = useState<Order[]>([])
   const [loading, setLoading] = useState(true)
   const router = useRouter()
+  const { t } = useTranslation()
 
   useEffect(() => {
     if (!authLoading && !user) {
@@ -104,6 +106,23 @@ export default function ProfilePage() {
     }
   }
 
+  const getStatusTranslation = (status: Order["status"]) => {
+    switch (status) {
+      case "Pending":
+        return t("profile.status.pending")
+      case "Paid":
+        return t("profile.status.paid")
+      case "Shipped":
+        return t("profile.status.shipped")
+      case "Delivered":
+        return t("profile.status.delivered")
+      case "Cancelled":
+        return t("profile.status.cancelled")
+      default:
+        return status
+    }
+  }
+
   const formatDate = (dateString: string) => {
     return new Date(dateString).toLocaleDateString('en-US', {
       year: 'numeric',
@@ -146,7 +165,7 @@ export default function ProfilePage() {
                 </div>
               </div>
               <Button variant="outline" onClick={logout}>
-                Sign Out
+                {t("profile.signOut")}
               </Button>
             </div>
           </CardHeader>
@@ -157,9 +176,9 @@ export default function ProfilePage() {
           <CardHeader>
             <CardTitle className="flex items-center">
               <Package className="h-5 w-5 mr-2" />
-              Order History
+              {t("profile.orderHistory")}
             </CardTitle>
-            <CardDescription>View your recent orders and their status</CardDescription>
+            <CardDescription>{t("profile.orderHistoryDesc")}</CardDescription>
           </CardHeader>
           <CardContent>
             {loading ? (
@@ -169,9 +188,9 @@ export default function ProfilePage() {
             ) : orders.length === 0 ? (
               <div className="text-center py-8">
                 <Package className="h-12 w-12 text-muted-foreground mx-auto mb-4" />
-                <p className="text-muted-foreground">No orders found</p>
+                <p className="text-muted-foreground">{t("profile.noOrders")}</p>
                 <Button className="mt-4" onClick={() => router.push("/products")}>
-                  Start Shopping
+                  {t("profile.startShopping")}
                 </Button>
               </div>
             ) : (
@@ -182,10 +201,10 @@ export default function ProfilePage() {
                       <div className="space-y-1">
                         <div className="flex items-center space-x-4">
                           <span className="font-medium">Order #{order.id}</span>
-                          <Badge className={getStatusColor(order.status)}>{order.status}</Badge>
+                          <Badge className={getStatusColor(order.status)}>{getStatusTranslation(order.status)}</Badge>
                         </div>
                         <p className="text-sm text-muted-foreground">
-                          {formatDate(order.created_at)} • {order.items.length} item{order.items.length !== 1 ? "s" : ""}
+                          {formatDate(order.created_at)} • {order.items.length} {order.items.length !== 1 ? t("profile.items") : t("profile.item")}
                         </p>
                         <p className="text-xs text-muted-foreground">
                           {order.delivery_state_display} • {order.payment_method_display}
