@@ -206,16 +206,27 @@ export default function HomePage() {
         )}
 
         <div className="text-center mt-16">
-          <Link href="/products">
-            <Button 
-              variant="outline" 
-              size="lg" 
-              className="bg-white border-2 border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white px-10 py-4 text-lg font-semibold rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105 hover:-translate-y-1"
-            >
-              {t("products.viewAll")}
-              <ArrowRight className="ml-3 h-6 w-6" />
-            </Button>
-          </Link>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link href="/products">
+              <Button 
+                variant="outline" 
+                size="lg" 
+                className="bg-white border-2 border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white px-10 py-4 text-lg font-semibold rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105 hover:-translate-y-1"
+              >
+                {t("products.viewAll")}
+                <ArrowRight className="ml-3 h-6 w-6" />
+              </Button>
+            </Link>
+            <Link href="/services">
+              <Button 
+                size="lg" 
+                className="bg-blue-600 hover:bg-blue-700 text-white px-10 py-4 text-lg font-semibold rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105 hover:-translate-y-1"
+              >
+                {t("hero.ourServices")}
+                <ArrowRight className="ml-3 h-6 w-6" />
+              </Button>
+            </Link>
+          </div>
         </div>
       </section>
     </div>

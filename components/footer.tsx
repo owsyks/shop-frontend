@@ -28,8 +28,7 @@ export function Footer() {
                 </span>
               </div>
               <p className="text-gray-300 leading-relaxed">
-                Your trusted online shopping destination for quality products at great prices. 
-                Discover amazing products with fast shipping and secure payments.
+                {t("footer.description")}
               </p>
               <div className="flex items-center space-x-4">
                 <Link 
@@ -53,45 +52,45 @@ export function Footer() {
 
             {/* Quick Links */}
             <div className="space-y-6">
-              <h3 className="font-bold text-lg text-white">Quick Links</h3>
+              <h3 className="font-bold text-lg text-white">{t("footer.quickLinks")}</h3>
               <div className="flex flex-col space-y-3">
                 <Link href="/products" className="text-gray-300 hover:text-blue-400 transition-colors duration-300 font-medium">
-                  All Products
+                  {t("footer.allProducts")}
                 </Link>
                 <Link href="/about" className="text-gray-300 hover:text-blue-400 transition-colors duration-300 font-medium">
-                  About Us
+                  {t("footer.aboutUs")}
                 </Link>
                 <Link href="/contact" className="text-gray-300 hover:text-blue-400 transition-colors duration-300 font-medium">
-                  Contact Us
+                  {t("footer.contactUs")}
                 </Link>
                 <Link href="/faq" className="text-gray-300 hover:text-blue-400 transition-colors duration-300 font-medium">
-                  FAQ
+                  {t("footer.faq")}
                 </Link>
               </div>
             </div>
 
             {/* Customer Service */}
             <div className="space-y-6">
-              <h3 className="font-bold text-lg text-white">Customer Service</h3>
+              <h3 className="font-bold text-lg text-white">{t("footer.customerService")}</h3>
               <div className="flex flex-col space-y-3">
                 <Link href="/help" className="text-gray-300 hover:text-blue-400 transition-colors duration-300 font-medium">
-                  Help Center
+                  {t("footer.helpCenter")}
                 </Link>
                 <Link href="/returns" className="text-gray-300 hover:text-blue-400 transition-colors duration-300 font-medium">
-                  Returns & Exchanges
+                  {t("footer.returnsExchanges")}
                 </Link>
                 <Link href="/shipping" className="text-gray-300 hover:text-blue-400 transition-colors duration-300 font-medium">
-                  Shipping Info
+                  {t("footer.shippingInfo")}
                 </Link>
                 <Link href="/privacy" className="text-gray-300 hover:text-blue-400 transition-colors duration-300 font-medium">
-                  Privacy Policy
+                  {t("footer.privacy")}
                 </Link>
               </div>
             </div>
 
             {/* Contact Info */}
             <div className="space-y-6">
-              <h3 className="font-bold text-lg text-white">Contact Info</h3>
+              <h3 className="font-bold text-lg text-white">{t("footer.contactInfo")}</h3>
               <div className="flex flex-col space-y-4">
                 <div className="flex items-center space-x-3">
                   <Mail className="h-5 w-5 text-blue-400" />
@@ -112,17 +111,17 @@ export function Footer() {
           <div className="border-t border-gray-800 mt-12 pt-8">
             <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
               <p className="text-gray-400 text-sm">
-                © 2025 Marketo. All rights reserved. Made with ❤️ for amazing shopping experiences.
+                {t("footer.copyright")}
               </p>
               <div className="flex items-center space-x-6 text-sm text-gray-400">
                 <Link href="/terms" className="hover:text-blue-400 transition-colors duration-300">
-                  Terms of Service
+                  {t("footer.termsOfService")}
                 </Link>
                 <Link href="/privacy" className="hover:text-blue-400 transition-colors duration-300">
-                  Privacy Policy
+                  {t("footer.privacy")}
                 </Link>
                 <Link href="/cookies" className="hover:text-blue-400 transition-colors duration-300">
-                  Cookie Policy
+                  {t("footer.cookiePolicy")}
                 </Link>
               </div>
             </div>
