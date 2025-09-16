@@ -1,4 +1,5 @@
 // Frontend configuration for Heroku backend
+// Updated: Force Vercel redeploy with correct Heroku URLs
 export const config = {
   // Heroku backend API URL
   API_BASE_URL: process.env.NEXT_PUBLIC_API_URL || "https://marketoo-c40becaacfb4.herokuapp.com",
