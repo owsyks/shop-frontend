@@ -403,8 +403,8 @@ const resources = {
       "services.cta.viewProducts": "تصفح المنتجات",
 
       // Features
-      "features.shipping.title": "شحن مجاني",
-      "features.shipping.desc": "توصيل مجاني للطلبات أكثر من 5000 دج",
+      "features.shipping.title": "شحن سريع",
+      "features.shipping.desc": "شحن سريع في مدة 1-3 أيام",
       "features.payment.title": "دفع آمن",
       "features.payment.desc": "معلومات الدفع الخاصة بك آمنة معنا",
       "features.support.title": "دعم 24/7",
