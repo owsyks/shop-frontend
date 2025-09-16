@@ -179,6 +179,7 @@ const resources = {
       "checkout.success": "Order Placed Successfully!",
       "checkout.successMessage": "Your order has been placed. We will call you to confirm.",
       "checkout.backToProducts": "Back to Products",
+      "checkout.orderSummary": "Order Summary",
 
       // Auth
       "auth.welcomeBack": "Welcome Back",
@@ -240,6 +241,25 @@ const resources = {
       "footer.termsOfService": "Terms of Service",
       "footer.cookiePolicy": "Cookie Policy",
       "footer.privacy": "Privacy Policy",
+
+      // Cart Page
+      "cart.title": "Shopping Cart",
+      "cart.empty": "Your cart is empty",
+      "cart.emptyDesc": "Looks like you haven't added any items to your cart yet.",
+      "cart.startShopping": "Start Shopping",
+      "cart.item": "item",
+      "cart.items": "items",
+      "cart.remove": "Remove",
+      "cart.quantity": "Quantity",
+      "cart.price": "Price",
+      "cart.subtotal": "Subtotal",
+      "cart.shipping": "Shipping",
+      "cart.total": "Total",
+      "cart.clearCart": "Clear Cart",
+      "cart.proceedToCheckout": "Proceed to Checkout",
+      "cart.continueShopping": "Continue Shopping",
+      "cart.outOfStock": "Out of Stock",
+      "cart.limitedStock": "Limited Stock",
 
       // Contact Page
       "contact.title": "Contact Us",
@@ -453,6 +473,7 @@ const resources = {
       "checkout.success": "تم تأكيد الطلب بنجاح!",
       "checkout.successMessage": "تم تأكيد طلبك. سنتصل بك لتأكيد التفاصيل.",
       "checkout.backToProducts": "العودة للمنتجات",
+      "checkout.orderSummary": "ملخص الطلب",
 
       // Auth
       "auth.welcomeBack": "مرحباً بعودتك",
@@ -514,6 +535,25 @@ const resources = {
       "footer.termsOfService": "شروط الخدمة",
       "footer.cookiePolicy": "سياسة ملفات تعريف الارتباط",
       "footer.privacy": "سياسة الخصوصية",
+
+      // Cart Page
+      "cart.title": "سلة التسوق",
+      "cart.empty": "سلتك فارغة",
+      "cart.emptyDesc": "يبدو أنك لم تضيف أي منتجات إلى سلة التسوق بعد.",
+      "cart.startShopping": "ابدأ التسوق",
+      "cart.item": "منتج",
+      "cart.items": "منتجات",
+      "cart.remove": "إزالة",
+      "cart.quantity": "الكمية",
+      "cart.price": "السعر",
+      "cart.subtotal": "المجموع الفرعي",
+      "cart.shipping": "الشحن",
+      "cart.total": "المجموع الكلي",
+      "cart.clearCart": "مسح السلة",
+      "cart.proceedToCheckout": "المتابعة للدفع",
+      "cart.continueShopping": "متابعة التسوق",
+      "cart.outOfStock": "نفد المخزون",
+      "cart.limitedStock": "مخزون محدود",
 
       // Contact Page
       "contact.title": "اتصل بنا",
@@ -797,6 +837,25 @@ const resources = {
       "footer.shippingInfo": "Informations de Livraison",
       "footer.contactInfo": "Informations de Contact",
       "footer.copyright": "© 2025 Marketo. Tous droits réservés. Fait avec ❤️ pour des expériences d'achat incroyables.",
+
+      // Cart Page
+      "cart.title": "Panier d'Achat",
+      "cart.empty": "Votre panier est vide",
+      "cart.emptyDesc": "Il semble que vous n'ayez pas encore ajouté d'articles à votre panier.",
+      "cart.startShopping": "Commencer les Achats",
+      "cart.item": "article",
+      "cart.items": "articles",
+      "cart.remove": "Supprimer",
+      "cart.quantity": "Quantité",
+      "cart.price": "Prix",
+      "cart.subtotal": "Sous-total",
+      "cart.shipping": "Livraison",
+      "cart.total": "Total",
+      "cart.clearCart": "Vider le Panier",
+      "cart.proceedToCheckout": "Passer à la Caisse",
+      "cart.continueShopping": "Continuer les Achats",
+      "cart.outOfStock": "Rupture de Stock",
+      "cart.limitedStock": "Stock Limité",
 
       // Common
       "common.loading": "Chargement...",
