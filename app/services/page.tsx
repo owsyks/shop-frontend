@@ -4,15 +4,21 @@ import React from "react"
 import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
-import { useTranslation } from "@/lib/i18n"
+import { useTranslation } from "react-i18next"
+import { useEffect, useState } from "react"
 import { Printer, Shirt, CreditCard, CheckCircle, Star, Users, Clock, Award } from "lucide-react"
 import Link from "next/link"
 
 export default function ServicesPage() {
-  const { t, isReady } = useTranslation()
+  const { t } = useTranslation()
+  const [mounted, setMounted] = useState(false)
 
-  // Prevent hydration errors by not rendering until translations are ready
-  if (!isReady) {
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
+  // Prevent hydration errors by not rendering until component is mounted
+  if (!mounted) {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-blue-600"></div>
