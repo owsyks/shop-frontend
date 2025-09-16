@@ -40,7 +40,7 @@ export function Footer() {
                   <Facebook className="h-5 w-5" />
                 </Link>
                 <Link 
-                  href="https://instagram.com/marketo" 
+                  href="https://www.facebook.com/profile.php?id=61580652337260" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-pink-600 transition-all duration-300 transform hover:scale-110"
@@ -156,7 +156,7 @@ export function Footer() {
                 <Facebook className="h-5 w-5" />
               </Link>
               <Link 
-                href="https://instagram.com/marketo" 
+                href="https://www.facebook.com/profile.php?id=61580652337260" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-pink-600 transition-all duration-300 transform hover:scale-110"
