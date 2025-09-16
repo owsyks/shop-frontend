@@ -720,8 +720,6 @@ const resources = {
       "footer.copyright": "© 2025 Marketo. Tous droits réservés. Fait avec ❤️ pour des expériences d'achat incroyables.",
       "footer.allProducts": "Tous les Produits",
       "footer.faq": "FAQ",
-      "footer.returnsExchanges": "Retours et Échanges",
-      "footer.contactInfo": "Informations de Contact",
       "footer.contactUs": "Nous Contacter",
       "footer.termsOfService": "Conditions de Service",
       "footer.cookiePolicy": "Politique des Cookies",
