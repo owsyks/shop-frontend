@@ -180,22 +180,10 @@ const resources = {
       "checkout.successMessage": "Your order has been placed. We will call you to confirm.",
       "checkout.backToProducts": "Back to Products",
       "checkout.orderSummary": "Order Summary",
-      "checkout.title": "Checkout",
       "checkout.subtitle": "Complete your order and we'll deliver it to you",
       "checkout.personalInfo": "Personal Information",
       "checkout.deliveryInfo": "Delivery Information",
       "checkout.paymentInfo": "Payment Information",
-
-      // Products Page
-      "products.title": "All Products",
-      "products.searchPlaceholder": "Search products...",
-      "products.filterByCategory": "Filter by Category",
-      "products.allCategories": "All Categories",
-      "products.addToCart": "Add to Cart",
-      "products.outOfStock": "Out of Stock",
-      "products.loading": "Loading products...",
-      "products.noProducts": "No products found",
-      "products.noProductsDesc": "Try adjusting your search or filter criteria.",
 
       // Auth
       "auth.welcomeBack": "Welcome Back",
@@ -257,25 +245,6 @@ const resources = {
       "footer.termsOfService": "Terms of Service",
       "footer.cookiePolicy": "Cookie Policy",
       "footer.privacy": "Privacy Policy",
-
-      // Cart Page
-      "cart.title": "Shopping Cart",
-      "cart.empty": "Your cart is empty",
-      "cart.emptyDesc": "Looks like you haven't added any items to your cart yet.",
-      "cart.startShopping": "Start Shopping",
-      "cart.item": "item",
-      "cart.items": "items",
-      "cart.remove": "Remove",
-      "cart.quantity": "Quantity",
-      "cart.price": "Price",
-      "cart.subtotal": "Subtotal",
-      "cart.shipping": "Shipping",
-      "cart.total": "Total",
-      "cart.clearCart": "Clear Cart",
-      "cart.proceedToCheckout": "Proceed to Checkout",
-      "cart.continueShopping": "Continue Shopping",
-      "cart.outOfStock": "Out of Stock",
-      "cart.limitedStock": "Limited Stock",
 
       // Contact Page
       "contact.title": "Contact Us",
@@ -490,22 +459,10 @@ const resources = {
       "checkout.successMessage": "تم تأكيد طلبك. سنتصل بك لتأكيد التفاصيل.",
       "checkout.backToProducts": "العودة للمنتجات",
       "checkout.orderSummary": "ملخص الطلب",
-      "checkout.title": "الدفع",
       "checkout.subtitle": "أكمل طلبك وسنقوم بتوصيله إليك",
       "checkout.personalInfo": "المعلومات الشخصية",
       "checkout.deliveryInfo": "معلومات التوصيل",
       "checkout.paymentInfo": "معلومات الدفع",
-
-      // Products Page
-      "products.title": "جميع المنتجات",
-      "products.searchPlaceholder": "البحث في المنتجات...",
-      "products.filterByCategory": "تصفية حسب الفئة",
-      "products.allCategories": "جميع الفئات",
-      "products.addToCart": "أضف للسلة",
-      "products.outOfStock": "نفد المخزون",
-      "products.loading": "جاري تحميل المنتجات...",
-      "products.noProducts": "لم يتم العثور على منتجات",
-      "products.noProductsDesc": "حاول تعديل معايير البحث أو التصفية.",
 
       // Auth
       "auth.welcomeBack": "مرحباً بعودتك",
@@ -567,25 +524,6 @@ const resources = {
       "footer.termsOfService": "شروط الخدمة",
       "footer.cookiePolicy": "سياسة ملفات تعريف الارتباط",
       "footer.privacy": "سياسة الخصوصية",
-
-      // Cart Page
-      "cart.title": "سلة التسوق",
-      "cart.empty": "سلتك فارغة",
-      "cart.emptyDesc": "يبدو أنك لم تضيف أي منتجات إلى سلة التسوق بعد.",
-      "cart.startShopping": "ابدأ التسوق",
-      "cart.item": "منتج",
-      "cart.items": "منتجات",
-      "cart.remove": "إزالة",
-      "cart.quantity": "الكمية",
-      "cart.price": "السعر",
-      "cart.subtotal": "المجموع الفرعي",
-      "cart.shipping": "الشحن",
-      "cart.total": "المجموع الكلي",
-      "cart.clearCart": "مسح السلة",
-      "cart.proceedToCheckout": "المتابعة للدفع",
-      "cart.continueShopping": "متابعة التسوق",
-      "cart.outOfStock": "نفد المخزون",
-      "cart.limitedStock": "مخزون محدود",
 
       // Contact Page
       "contact.title": "اتصل بنا",
@@ -782,17 +720,6 @@ const resources = {
       "checkout.paymentInfo": "Informations de Paiement",
       "checkout.orderSummary": "Résumé de la Commande",
       "checkout.placeOrder": "Passer la Commande",
-
-      // Products Page
-      "products.title": "Tous les Produits",
-      "products.searchPlaceholder": "Rechercher des produits...",
-      "products.filterByCategory": "Filtrer par Catégorie",
-      "products.allCategories": "Toutes les Catégories",
-      "products.addToCart": "Ajouter au Panier",
-      "products.outOfStock": "Rupture de Stock",
-      "products.loading": "Chargement des produits...",
-      "products.noProducts": "Aucun produit trouvé",
-      "products.noProductsDesc": "Essayez d'ajuster vos critères de recherche ou de filtrage.",
       "checkout.firstName": "Prénom",
       "checkout.lastName": "Nom de Famille",
       "checkout.email": "Email",
@@ -882,25 +809,6 @@ const resources = {
       "footer.shippingInfo": "Informations de Livraison",
       "footer.contactInfo": "Informations de Contact",
       "footer.copyright": "© 2025 Marketo. Tous droits réservés. Fait avec ❤️ pour des expériences d'achat incroyables.",
-
-      // Cart Page
-      "cart.title": "Panier d'Achat",
-      "cart.empty": "Votre panier est vide",
-      "cart.emptyDesc": "Il semble que vous n'ayez pas encore ajouté d'articles à votre panier.",
-      "cart.startShopping": "Commencer les Achats",
-      "cart.item": "article",
-      "cart.items": "articles",
-      "cart.remove": "Supprimer",
-      "cart.quantity": "Quantité",
-      "cart.price": "Prix",
-      "cart.subtotal": "Sous-total",
-      "cart.shipping": "Livraison",
-      "cart.total": "Total",
-      "cart.clearCart": "Vider le Panier",
-      "cart.proceedToCheckout": "Passer à la Caisse",
-      "cart.continueShopping": "Continuer les Achats",
-      "cart.outOfStock": "Rupture de Stock",
-      "cart.limitedStock": "Stock Limité",
 
       // Common
       "common.loading": "Chargement...",
