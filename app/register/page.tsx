@@ -291,7 +291,10 @@ export default function RegisterPage() {
 
             <div className="mt-6 text-center">
               <p className="text-sm text-muted-foreground">
-                {t("auth.hasAccount")}
+                {t("auth.hasAccount")}{" "}
+                <Link href="/login" className="text-primary hover:underline font-medium">
+                  {t("auth.signInHere")}
+                </Link>
               </p>
             </div>
           </CardContent>
