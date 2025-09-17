@@ -24,6 +24,7 @@ const resources = {
       "categories.sportsGaming": "Sports & Gaming",
       "categories.automotive": "Automotive",
       "categories.booksOffice": "Books & Office",
+      "categories.cosmeticsBeauty": "Cosmetics & Beauty",
       "categories.viewAll": "View All Products",
       
       // Electronics Subcategories
@@ -65,6 +66,13 @@ const resources = {
       "categories.booksOffice.furniture": "Office Furniture",
       "categories.booksOffice.school": "School Supplies",
       "categories.booksOffice.stationery": "Stationery",
+
+      // Cosmetics & Beauty Subcategories
+      "categories.cosmeticsBeauty.makeup": "Makeup",
+      "categories.cosmeticsBeauty.skincare": "Skincare",
+      "categories.cosmeticsBeauty.hairCare": "Hair Care",
+      "categories.cosmeticsBeauty.fragrances": "Fragrances",
+      "categories.cosmeticsBeauty.personalCare": "Personal Care",
 
       // Homepage
       "hero.title": "Discover Amazing Products",
@@ -319,6 +327,7 @@ const resources = {
       "categories.sportsGaming": "الرياضة والألعاب",
       "categories.automotive": "السيارات",
       "categories.booksOffice": "الكتب والمكتب",
+      "categories.cosmeticsBeauty": "مستحضرات التجميل والجمال",
       "categories.viewAll": "عرض جميع المنتجات",
       
       // Electronics Subcategories
@@ -360,6 +369,13 @@ const resources = {
       "categories.booksOffice.furniture": "أثاث المكتب",
       "categories.booksOffice.school": "مستلزمات المدرسة",
       "categories.booksOffice.stationery": "الأدوات المكتبية",
+
+      // Cosmetics & Beauty Subcategories
+      "categories.cosmeticsBeauty.makeup": "مستحضرات التجميل",
+      "categories.cosmeticsBeauty.skincare": "العناية بالبشرة",
+      "categories.cosmeticsBeauty.hairCare": "العناية بالشعر",
+      "categories.cosmeticsBeauty.fragrances": "العطور",
+      "categories.cosmeticsBeauty.personalCare": "العناية الشخصية",
 
       // Homepage
       "hero.title": "اكتشف منتجات مذهلة",
@@ -614,6 +630,7 @@ const resources = {
       "categories.sportsGaming": "Sports et Jeux",
       "categories.automotive": "Automobile",
       "categories.booksOffice": "Livres et Bureau",
+      "categories.cosmeticsBeauty": "Cosmétiques et Beauté",
       "categories.viewAll": "Voir Tous les Produits",
       
       // Electronics Subcategories
@@ -655,6 +672,13 @@ const resources = {
       "categories.booksOffice.furniture": "Mobilier de Bureau",
       "categories.booksOffice.school": "Fournitures Scolaires",
       "categories.booksOffice.stationery": "Papeterie",
+
+      // Cosmetics & Beauty Subcategories
+      "categories.cosmeticsBeauty.makeup": "Maquillage",
+      "categories.cosmeticsBeauty.skincare": "Soins de la Peau",
+      "categories.cosmeticsBeauty.hairCare": "Soins des Cheveux",
+      "categories.cosmeticsBeauty.fragrances": "Parfums",
+      "categories.cosmeticsBeauty.personalCare": "Soins Personnels",
 
       // Homepage
       "hero.title": "Découvrez des Produits Incroyables",
