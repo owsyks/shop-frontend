@@ -129,6 +129,16 @@ export function Header() {
     }
   }
 
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }
+
+  const handleNavigationClick = (href: string) => {
+    setMobileMenuOpen(false) // Close mobile menu
+    scrollToTop() // Scroll to top
+    router.push(href) // Navigate to the page
+  }
+
   const toggleCategory = (index: number) => {
     const newExpanded = new Set(expandedCategories)
     if (newExpanded.has(index)) {
@@ -327,14 +337,20 @@ export function Header() {
 
               {/* Mobile Navigation */}
               <nav className="flex flex-col space-y-2">
-                <Link href="/" className="text-foreground hover:text-blue-600 transition-colors duration-300 py-2 font-medium">
+                <button 
+                  onClick={() => handleNavigationClick("/")}
+                  className="text-left text-foreground hover:text-blue-600 transition-colors duration-300 py-2 font-medium"
+                >
                   {t("nav.home")}
-                </Link>
+                </button>
                 
                 {/* Services Link */}
-                <Link href="/services" className="text-foreground hover:text-blue-600 transition-colors duration-300 py-2 font-medium">
+                <button 
+                  onClick={() => handleNavigationClick("/services")}
+                  className="text-left text-foreground hover:text-blue-600 transition-colors duration-300 py-2 font-medium"
+                >
                   {t("nav.services")}
-                </Link>
+                </button>
                 
                 {/* Mobile Categories */}
                 <div className="space-y-2">
@@ -347,13 +363,13 @@ export function Header() {
                     return (
                       <div key={index} className="ml-4 space-y-1">
                         <div className="flex items-center justify-between">
-                          <Link 
-                            href={category.href}
+                          <button 
+                            onClick={() => handleNavigationClick(category.href)}
                             className="flex items-center space-x-2 text-foreground hover:text-blue-600 transition-colors duration-300 py-1 font-medium"
                           >
                             <IconComponent className="h-4 w-4 text-blue-600" />
                             <span>{category.name}</span>
-                          </Link>
+                          </button>
                           <button
                             onClick={() => toggleCategory(index)}
                             className="p-1 hover:bg-gray-100 rounded transition-colors duration-200"
@@ -364,31 +380,40 @@ export function Header() {
                         {isExpanded && (
                           <div className="ml-6 space-y-1">
                             {category.subcategories.map((subcategory, subIndex) => (
-                              <Link
+                              <button
                                 key={subIndex}
-                                href={subcategory.href}
-                                className="block text-sm text-gray-600 hover:text-blue-600 transition-colors duration-300 py-1"
+                                onClick={() => handleNavigationClick(subcategory.href)}
+                                className="block text-left text-sm text-gray-600 hover:text-blue-600 transition-colors duration-300 py-1"
                               >
                                 {subcategory.name}
-                              </Link>
+                              </button>
                             ))}
                           </div>
                         )}
                       </div>
                     )
                   })}
-                  <Link href="/products" className="ml-4 text-blue-600 hover:text-blue-700 transition-colors duration-300 py-1 font-medium">
+                  <button 
+                    onClick={() => handleNavigationClick("/products")}
+                    className="ml-4 text-left text-blue-600 hover:text-blue-700 transition-colors duration-300 py-1 font-medium"
+                  >
                     {t("categories.viewAll")}
-                  </Link>
+                  </button>
                 </div>
                 
                 {user ? (
                   <>
-                    <Link href="/profile" className="text-foreground hover:text-blue-600 transition-colors duration-300 py-2 font-medium">
+                    <button 
+                      onClick={() => handleNavigationClick("/profile")}
+                      className="text-left text-foreground hover:text-blue-600 transition-colors duration-300 py-2 font-medium"
+                    >
                       {t("nav.profile")}
-                    </Link>
+                    </button>
                     <button
-                      onClick={logout}
+                      onClick={() => {
+                        setMobileMenuOpen(false)
+                        logout()
+                      }}
                       className="text-left text-foreground hover:text-blue-600 transition-colors duration-300 py-2 font-medium"
                     >
                       {t("nav.logout")}
@@ -396,12 +421,18 @@ export function Header() {
                   </>
                 ) : (
                   <>
-                    <Link href="/login" className="text-foreground hover:text-blue-600 transition-colors duration-300 py-2 font-medium">
+                    <button 
+                      onClick={() => handleNavigationClick("/login")}
+                      className="text-left text-foreground hover:text-blue-600 transition-colors duration-300 py-2 font-medium"
+                    >
                       {t("nav.login")}
-                    </Link>
-                    <Link href="/register" className="text-foreground hover:text-blue-600 transition-colors duration-300 py-2 font-medium">
+                    </button>
+                    <button 
+                      onClick={() => handleNavigationClick("/register")}
+                      className="text-left text-foreground hover:text-blue-600 transition-colors duration-300 py-2 font-medium"
+                    >
                       {t("nav.signup")}
-                    </Link>
+                    </button>
                   </>
                 )}
               </nav>
