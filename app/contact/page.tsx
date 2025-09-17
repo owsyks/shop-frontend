@@ -206,8 +206,7 @@ export default function ContactPage() {
                     <Phone className="h-5 w-5 text-blue-600 mt-1" />
                     <div>
                       <p className="font-medium">{t("contact.phoneLabel")}</p>
-                      <p className="text-gray-600">+213 123 456 789</p>
-                      <p className="text-gray-600">+213 987 654 321</p>
+                      <p className="text-gray-600">+213562494297</p>
                     </div>
                   </div>
                   
