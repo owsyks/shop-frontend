@@ -28,6 +28,16 @@ export interface Category {
   slug: string
 }
 
+export interface ProductImage {
+  id: number
+  image: string
+  image_url: string
+  alt_text: string
+  order: number
+  is_primary: boolean
+  created_at: string
+}
+
 export interface Product {
   id: number
   name: string
@@ -35,6 +45,7 @@ export interface Product {
   price: number
   stock: number
   image_url: string
+  images: ProductImage[]
   category: Category
   is_active: boolean
   created_at: string
@@ -486,6 +497,17 @@ export const ratingsAPI = {
 }
 
 // Helper function to get product image URL
-export const getProductImageUrl = (filename: string) => {
-  return `${API_BASE_URL}/media/products/${filename}`
+export const getProductImageUrl = (imageUrl: string) => {
+  // If it's already a full URL, return as is
+  if (imageUrl.startsWith('http://') || imageUrl.startsWith('https://')) {
+    return imageUrl
+  }
+  
+  // If it's a relative path, prepend the API base URL
+  if (imageUrl.startsWith('/')) {
+    return `${API_BASE_URL}${imageUrl}`
+  }
+  
+  // If it's just a filename, assume it's in the media/products directory
+  return `${API_BASE_URL}/media/products/${imageUrl}`
 }

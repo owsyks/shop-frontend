@@ -9,30 +9,13 @@ import { Badge } from "@/components/ui/badge"
 import { Separator } from "@/components/ui/separator"
 import { useCart } from "@/hooks/use-cart"
 import { Star, ShoppingCart, ArrowLeft, Minus, Plus } from "lucide-react"
-import { productsAPI } from "@/lib/api"
+import { productsAPI, Product, ProductImage } from "@/lib/api"
 import ProductRating from "@/components/product-rating"
-import Image from "next/image"
+import ProductImageGallery from "@/components/product-image-gallery"
 import { LoadingSpinner } from "@/components/ui/loading"
 import { getProductImageUrl } from "@/lib/utils"
 import { toast } from "sonner"
 import { generateProductStructuredData, generateProductMetaTags, generateBreadcrumbStructuredData, generateProductSlug } from "@/lib/seo"
-
-interface Product {
-  id: number
-  name: string
-  description: string
-  price: number
-  stock: number
-  image_url: string
-  category: {
-    id: number
-    name: string
-    slug: string
-  }
-  is_active: boolean
-  created_at: string
-  updated_at: string
-}
 
 export default function ProductDetailPage() {
   const params = useParams()
@@ -68,6 +51,26 @@ export default function ProductDetailPage() {
           "Experience superior sound quality with these premium wireless headphones. Featuring advanced noise cancellation technology, comfortable over-ear design, and up to 30 hours of battery life. Perfect for music lovers, professionals, and anyone who values high-quality audio.",
         price: 199.99,
         image_url: "/wireless-headphones.png",
+        images: [
+          {
+            id: 1,
+            image: "/wireless-headphones.png",
+            image_url: "/wireless-headphones.png",
+            alt_text: "Premium Wireless Headphones - Front View",
+            order: 0,
+            is_primary: true,
+            created_at: "2024-01-01T00:00:00Z"
+          },
+          {
+            id: 2,
+            image: "/wireless-headphones.png",
+            image_url: "/wireless-headphones.png",
+            alt_text: "Premium Wireless Headphones - Side View",
+            order: 1,
+            is_primary: false,
+            created_at: "2024-01-01T00:00:00Z"
+          }
+        ],
         category: {
           id: 1,
           name: "Electronics",
@@ -85,6 +88,17 @@ export default function ProductDetailPage() {
           "Track your fitness goals and stay connected with this advanced smartwatch. Monitor heart rate, steps, sleep patterns, and more. Water-resistant design perfect for workouts and daily wear.",
         price: 299.99,
         image_url: "/fitness-smartwatch.png",
+        images: [
+          {
+            id: 3,
+            image: "/fitness-smartwatch.png",
+            image_url: "/fitness-smartwatch.png",
+            alt_text: "Smart Fitness Watch - Main View",
+            order: 0,
+            is_primary: true,
+            created_at: "2024-01-01T00:00:00Z"
+          }
+        ],
         category: {
           id: 1,
           name: "Electronics",
@@ -102,6 +116,17 @@ export default function ProductDetailPage() {
           "Durable and stylish backpack designed for laptops up to 15.6 inches. Multiple compartments for organization, padded laptop sleeve, and comfortable shoulder straps make it perfect for work, school, or travel.",
         price: 79.99,
         image_url: "/laptop-backpack.png",
+        images: [
+          {
+            id: 4,
+            image: "/laptop-backpack.png",
+            image_url: "/laptop-backpack.png",
+            alt_text: "Laptop Backpack - Front View",
+            order: 0,
+            is_primary: true,
+            created_at: "2024-01-01T00:00:00Z"
+          }
+        ],
         category: {
           id: 2,
           name: "Accessories",
@@ -119,6 +144,17 @@ export default function ProductDetailPage() {
           "Portable Bluetooth speaker with exceptional sound quality. Compact design with powerful bass, long battery life, and water-resistant construction. Perfect for outdoor adventures or home entertainment.",
         price: 149.99,
         image_url: "/bluetooth-speaker.png",
+        images: [
+          {
+            id: 5,
+            image: "/bluetooth-speaker.png",
+            image_url: "/bluetooth-speaker.png",
+            alt_text: "Bluetooth Speaker - Main View",
+            order: 0,
+            is_primary: true,
+            created_at: "2024-01-01T00:00:00Z"
+          }
+        ],
         category: {
           id: 1,
           name: "Electronics",
@@ -138,6 +174,7 @@ export default function ProductDetailPage() {
         description: "This product could not be found.",
         price: 0,
         image_url: "/placeholder.svg?height=400&width=400",
+        images: [],
         category: {
           id: 0,
           name: "Unknown",
@@ -246,21 +283,13 @@ export default function ProductDetailPage() {
 
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-            {/* Product Image */}
+            {/* Product Image Gallery */}
             <div className="space-y-4">
-              <div className="aspect-square overflow-hidden rounded-xl bg-white shadow-lg">
-                <Image 
-                  src={getProductImageUrl(product.image_url)} 
-                  alt={product.name} 
-                  width={500}
-                  height={500}
-                  className="w-full h-full object-cover"
-                  onError={(e) => {
-                    const target = e.target as HTMLImageElement;
-                    target.src = "/placeholder.svg";
-                  }}
-                />
-              </div>
+              <ProductImageGallery 
+                images={product.images || []} 
+                productName={product.name}
+                className="w-full"
+              />
             </div>
 
             {/* Product Details */}
