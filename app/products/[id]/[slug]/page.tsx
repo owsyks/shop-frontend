@@ -17,24 +17,6 @@ import { getProductImageUrl } from "@/lib/utils"
 import { toast } from "sonner"
 import { generateProductStructuredData, generateProductMetaTags, generateBreadcrumbStructuredData, generateProductSlug } from "@/lib/seo"
 
-interface Product {
-  id: number
-  name: string
-  description: string
-  price: number
-  stock: number
-  image_url: string
-  images: ProductImage[]
-  category: {
-    id: number
-    name: string
-    slug: string
-  }
-  is_active: boolean
-  created_at: string
-  updated_at: string
-}
-
 export default function ProductDetailPage() {
   const params = useParams()
   const router = useRouter()
