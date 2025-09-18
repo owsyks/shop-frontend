@@ -7,10 +7,8 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Separator } from "@/components/ui/separator"
 import { useCart } from "@/hooks/use-cart"
 import { Minus, Plus, Trash2, ShoppingBag, ArrowRight } from "lucide-react"
-import { useTranslation } from "react-i18next"
 
 export default function CartPage() {
-  const { t } = useTranslation()
   const { items, updateQuantity, removeFromCart, getTotalPrice, getTotalItems, clearCart } = useCart()
   const [isClearing, setIsClearing] = useState(false)
 
@@ -34,13 +32,13 @@ export default function CartPage() {
           <div className="w-24 h-24 bg-muted rounded-full flex items-center justify-center mx-auto mb-6">
             <ShoppingBag className="h-12 w-12 text-muted-foreground" />
           </div>
-          <h1 className="text-3xl font-bold mb-4">{t("cart.empty")}</h1>
+          <h1 className="text-3xl font-bold mb-4">Your cart is empty</h1>
           <p className="text-muted-foreground mb-8">
-            {t("cart.emptyDesc")}
+            Looks like you haven't added any items to your cart yet. Start shopping to fill it up!
           </p>
           <Link href="/products">
             <Button size="lg">
-              {t("cart.startShopping")}
+              Start Shopping
               <ArrowRight className="ml-2 h-5 w-5" />
             </Button>
           </Link>
@@ -53,9 +51,9 @@ export default function CartPage() {
     <div className="container mx-auto px-4 py-8">
       <div className="max-w-6xl mx-auto">
         <div className="flex items-center justify-between mb-8">
-          <h1 className="text-3xl font-bold">{t("cart.title")}</h1>
+          <h1 className="text-3xl font-bold">Shopping Cart</h1>
           <div className="text-muted-foreground">
-            {getTotalItems()} {getTotalItems() !== 1 ? t("cart.items") : t("cart.item")}
+            {getTotalItems()} item{getTotalItems() !== 1 ? "s" : ""}
           </div>
         </div>
 
@@ -64,15 +62,15 @@ export default function CartPage() {
           <div className="lg:col-span-2 space-y-4">
             <Card>
               <CardHeader className="flex flex-row items-center justify-between">
-                <CardTitle>{t("cart.title")}</CardTitle>
+                <CardTitle>Items in your cart</CardTitle>
                 <Button
-                  variant="destructive"
+                  variant="ghost"
                   size="sm"
                   onClick={handleClearCart}
                   disabled={isClearing}
-                  className="bg-red-600 text-white hover:bg-red-700 font-medium"
+                  className="text-destructive hover:text-destructive"
                 >
-                  {isClearing ? t("common.loading") : t("cart.clearAll")}
+                  {isClearing ? "Clearing..." : "Clear all"}
                 </Button>
               </CardHeader>
               <CardContent className="space-y-4">
@@ -134,7 +132,7 @@ export default function CartPage() {
             {/* Continue Shopping */}
             <div className="flex justify-between items-center">
               <Link href="/products">
-                <Button variant="outline">{t("cart.continueShopping")}</Button>
+                <Button variant="outline">Continue Shopping</Button>
               </Link>
             </div>
           </div>
@@ -143,29 +141,29 @@ export default function CartPage() {
           <div className="space-y-6">
             <Card>
               <CardHeader>
-                <CardTitle>{t("checkout.orderSummary")}</CardTitle>
+                <CardTitle>Order Summary</CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
                 <div className="flex justify-between">
-                  <span>{t("cart.subtotal")} ({getTotalItems()} {getTotalItems() !== 1 ? t("cart.items") : t("cart.item")})</span>
+                  <span>Subtotal ({getTotalItems()} items)</span>
                   <span>{Number(subtotal).toLocaleString()} DZD</span>
                 </div>
 
                 <div className="flex justify-between">
-                  <span>{t("cart.shipping")}</span>
+                  <span>Shipping</span>
                   <span>{Number(shipping).toLocaleString()} DZD</span>
                 </div>
 
                 <Separator />
 
                 <div className="flex justify-between text-lg font-semibold">
-                  <span>{t("cart.total")}</span>
+                  <span>Total</span>
                   <span>{Number(total).toLocaleString()} DZD</span>
                 </div>
 
                 <Link href="/checkout" className="block">
                   <Button size="lg" className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-4 px-6 text-lg rounded-lg shadow-lg hover:shadow-xl transition-all duration-300">
-                    {t("cart.proceedToCheckout")}
+                    Proceed to Checkout
                     <ArrowRight className="ml-2 h-5 w-5" />
                   </Button>
                 </Link>

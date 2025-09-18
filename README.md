@@ -41,7 +41,7 @@ A modern e-commerce frontend built with Next.js 14, TypeScript, and Tailwind CSS
 3. **Set up environment variables**:
    Create a `.env.local` file:
    ```bash
-   NEXT_PUBLIC_API_URL=https://marketoo-c40becaacfb4.herokuapp.com
+   NEXT_PUBLIC_API_URL=https://web-production-c8461.up.railway.app
    ```
 
 4. **Run the development server**:
@@ -62,7 +62,7 @@ A modern e-commerce frontend built with Next.js 14, TypeScript, and Tailwind CSS
    - Import your GitHub repository
 
 2. **Configure environment variables**:
-   - Add `NEXT_PUBLIC_API_URL=https://marketoo-c40becaacfb4.herokuapp.com`
+   - Add `NEXT_PUBLIC_API_URL=https://web-production-c8461.up.railway.app`
    - Add any other required environment variables
 
 3. **Deploy**:
@@ -89,7 +89,7 @@ A modern e-commerce frontend built with Next.js 14, TypeScript, and Tailwind CSS
 4. **Set environment variables**:
    ```bash
    vercel env add NEXT_PUBLIC_API_URL
-   # Enter: https://marketoo-c40becaacfb4.herokuapp.com
+   # Enter: https://web-production-c8461.up.railway.app
    ```
 
 5. **Redeploy**:
@@ -103,7 +103,7 @@ A modern e-commerce frontend built with Next.js 14, TypeScript, and Tailwind CSS
 
 | Variable | Description | Default |
 |----------|-------------|---------|
-| `NEXT_PUBLIC_API_URL` | Backend API URL | `https://marketoo-c40becaacfb4.herokuapp.com` |
+| `NEXT_PUBLIC_API_URL` | Backend API URL | `https://web-production-c8461.up.railway.app` |
 
 ### API Endpoints
 
@@ -153,8 +153,8 @@ Built with shadcn/ui components:
 
 This frontend is designed to work with the Django REST API backend:
 - **Backend Repository**: [shop-backend](https://github.com/owsyks/shop-backend.git)
-- **Backend URL**: https://marketoo-c40becaacfb4.herokuapp.com
-- **Admin Panel**: https://marketoo-c40becaacfb4.herokuapp.com/admin/
+- **Backend URL**: https://web-production-c8461.up.railway.app
+- **Admin Panel**: https://web-production-c8461.up.railway.app/admin/
 
 ## 📄 License
 

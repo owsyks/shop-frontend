@@ -2,7 +2,7 @@
 
 import type React from "react"
 import Link from "next/link"
-import { ShoppingCart, User, Search, Menu, X, ChevronDown, Smartphone, Laptop, Headphones, Home, Shirt, Watch, Gamepad2, Car, BookOpen, Sparkles } from "lucide-react"
+import { ShoppingCart, User, Search, Menu, X, ChevronDown, Smartphone, Laptop, Headphones, Home, Shirt, Watch, Gamepad2, Car, BookOpen } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { useAuth } from "@/hooks/use-auth"
@@ -21,7 +21,6 @@ export function Header() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [categoriesOpen, setCategoriesOpen] = useState(false)
   const [hoverTimeout, setHoverTimeout] = useState<NodeJS.Timeout | null>(null)
-  const [expandedCategories, setExpandedCategories] = useState<Set<number>>(new Set())
   const { t } = useTranslation()
   const router = useRouter()
 
@@ -97,18 +96,6 @@ export function Header() {
         { name: t("categories.booksOffice.stationery"), href: "/products?category=604" }, // Stationery ID
       ]
     },
-    {
-      name: t("categories.cosmeticsBeauty"),
-      icon: Sparkles,
-      href: "/products?category=7", // Cosmetics & Beauty ID
-      subcategories: [
-        { name: t("categories.cosmeticsBeauty.makeup"), href: "/products?category=701" }, // Makeup ID
-        { name: t("categories.cosmeticsBeauty.skincare"), href: "/products?category=702" }, // Skincare ID
-        { name: t("categories.cosmeticsBeauty.hairCare"), href: "/products?category=703" }, // Hair Care ID
-        { name: t("categories.cosmeticsBeauty.fragrances"), href: "/products?category=704" }, // Fragrances ID
-        { name: t("categories.cosmeticsBeauty.personalCare"), href: "/products?category=705" }, // Personal Care ID
-      ]
-    },
   ]
 
   const handleMouseEnter = () => {
@@ -141,26 +128,6 @@ export function Header() {
     }
   }
 
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' })
-  }
-
-  const handleNavigationClick = (href: string) => {
-    setMobileMenuOpen(false) // Close mobile menu
-    scrollToTop() // Scroll to top
-    router.push(href) // Navigate to the page
-  }
-
-  const toggleCategory = (index: number) => {
-    const newExpanded = new Set(expandedCategories)
-    if (newExpanded.has(index)) {
-      newExpanded.delete(index)
-    } else {
-      newExpanded.add(index)
-    }
-    setExpandedCategories(newExpanded)
-  }
-
   return (
     <header className={`sticky top-0 z-50 w-full transition-all duration-300 ${
       isScrolled 
@@ -187,15 +154,6 @@ export function Header() {
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 transition-all duration-300 group-hover:w-full"></span>
             </Link>
             
-            {/* Services Link */}
-            <Link 
-              href="/services" 
-              className="relative text-foreground hover:text-blue-600 transition-colors duration-300 font-medium group"
-            >
-              {t("nav.services")}
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 transition-all duration-300 group-hover:w-full"></span>
-            </Link>
-            
             {/* Categories Dropdown */}
             <div 
               className="relative"
@@ -210,54 +168,43 @@ export function Header() {
               
               {/* Mega Menu Dropdown */}
               {categoriesOpen && (
-                <div className="absolute top-full left-0 mt-2 w-80 max-w-[90vw] bg-white rounded-lg shadow-xl border border-gray-200 z-50 overflow-hidden">
-                  <div className="grid grid-cols-1 gap-0">
+                <div className="absolute top-full left-0 mt-2 w-96 bg-white rounded-lg shadow-xl border border-gray-200 z-50 overflow-hidden">
+                  <div className="grid grid-cols-2 gap-0">
                     {categories.map((category, index) => {
                       const IconComponent = category.icon
-                      const isExpanded = expandedCategories.has(index)
                       return (
-                        <div key={index} className="p-3 hover:bg-gray-50 transition-colors duration-200">
-                          <div className="flex items-center justify-between">
-                            <Link 
-                              href={category.href}
-                              className="flex items-center space-x-3 text-gray-900 hover:text-blue-600 transition-colors duration-200 group"
-                            >
-                              <IconComponent className="h-4 w-4 text-blue-600 group-hover:scale-110 transition-transform duration-200" />
-                              <span className="font-semibold text-sm">{category.name}</span>
-                            </Link>
-                            <button
-                              onClick={() => toggleCategory(index)}
-                              className="p-1 hover:bg-gray-100 rounded transition-colors duration-200"
-                            >
-                              <ChevronDown className={`h-4 w-4 text-gray-500 transition-transform duration-200 ${isExpanded ? 'rotate-180' : ''}`} />
-                            </button>
+                        <div key={index} className="p-4 hover:bg-gray-50 transition-colors duration-200">
+                          <Link 
+                            href={category.href}
+                            className="flex items-center space-x-3 text-gray-900 hover:text-blue-600 transition-colors duration-200 group"
+                          >
+                            <IconComponent className="h-5 w-5 text-blue-600 group-hover:scale-110 transition-transform duration-200" />
+                            <span className="font-semibold">{category.name}</span>
+                          </Link>
+                          <div className="mt-2 space-y-1">
+                            {category.subcategories.map((subcategory, subIndex) => (
+                              <Link
+                                key={subIndex}
+                                href={subcategory.href}
+                                className="block text-sm text-gray-600 hover:text-blue-600 transition-colors duration-200 py-1 pl-8"
+                              >
+                                {subcategory.name}
+                              </Link>
+                            ))}
                           </div>
-                          {isExpanded && (
-                            <div className="mt-1 space-y-1">
-                              {category.subcategories.map((subcategory, subIndex) => (
-                                <Link
-                                  key={subIndex}
-                                  href={subcategory.href}
-                                  className="block text-xs text-gray-600 hover:text-blue-600 transition-colors duration-200 py-1 pl-7"
-                                >
-                                  {subcategory.name}
-                                </Link>
-                              ))}
-                            </div>
-                          )}
                         </div>
                       )
                     })}
                   </div>
                   
                   {/* View All Products Link */}
-                  <div className="border-t bg-gray-50 p-3">
+                  <div className="border-t bg-gray-50 p-4">
                     <Link 
                       href="/products"
-                      className="flex items-center justify-center space-x-2 text-blue-600 hover:text-blue-700 font-semibold text-sm transition-colors duration-200"
+                      className="flex items-center justify-center space-x-2 text-blue-600 hover:text-blue-700 font-semibold transition-colors duration-200"
                     >
                       <span>{t("categories.viewAll")}</span>
-                      <ChevronDown className="h-3 w-3 rotate-[-90deg]" />
+                      <ChevronDown className="h-4 w-4 rotate-[-90deg]" />
                     </Link>
                   </div>
                 </div>
@@ -349,20 +296,9 @@ export function Header() {
 
               {/* Mobile Navigation */}
               <nav className="flex flex-col space-y-2">
-                <button 
-                  onClick={() => handleNavigationClick("/")}
-                  className="text-left text-foreground hover:text-blue-600 transition-colors duration-300 py-2 font-medium"
-                >
+                <Link href="/" className="text-foreground hover:text-blue-600 transition-colors duration-300 py-2 font-medium">
                   {t("nav.home")}
-                </button>
-                
-                {/* Services Link */}
-                <button 
-                  onClick={() => handleNavigationClick("/services")}
-                  className="text-left text-foreground hover:text-blue-600 transition-colors duration-300 py-2 font-medium"
-                >
-                  {t("nav.services")}
-                </button>
+                </Link>
                 
                 {/* Mobile Categories */}
                 <div className="space-y-2">
@@ -371,61 +307,41 @@ export function Header() {
                   </div>
                   {categories.map((category, index) => {
                     const IconComponent = category.icon
-                    const isExpanded = expandedCategories.has(index)
                     return (
                       <div key={index} className="ml-4 space-y-1">
-                        <div className="flex items-center justify-between">
-                          <button 
-                            onClick={() => handleNavigationClick(category.href)}
-                            className="flex items-center space-x-2 text-foreground hover:text-blue-600 transition-colors duration-300 py-1 font-medium"
-                          >
-                            <IconComponent className="h-4 w-4 text-blue-600" />
-                            <span>{category.name}</span>
-                          </button>
-                          <button
-                            onClick={() => toggleCategory(index)}
-                            className="p-1 hover:bg-gray-100 rounded transition-colors duration-200"
-                          >
-                            <ChevronDown className={`h-4 w-4 text-gray-500 transition-transform duration-200 ${isExpanded ? 'rotate-180' : ''}`} />
-                          </button>
+                        <Link 
+                          href={category.href}
+                          className="flex items-center space-x-2 text-foreground hover:text-blue-600 transition-colors duration-300 py-1 font-medium"
+                        >
+                          <IconComponent className="h-4 w-4 text-blue-600" />
+                          <span>{category.name}</span>
+                        </Link>
+                        <div className="ml-6 space-y-1">
+                          {category.subcategories.map((subcategory, subIndex) => (
+                            <Link
+                              key={subIndex}
+                              href={subcategory.href}
+                              className="block text-sm text-gray-600 hover:text-blue-600 transition-colors duration-300 py-1"
+                            >
+                              {subcategory.name}
+                            </Link>
+                          ))}
                         </div>
-                        {isExpanded && (
-                          <div className="ml-6 space-y-1">
-                            {category.subcategories.map((subcategory, subIndex) => (
-                              <button
-                                key={subIndex}
-                                onClick={() => handleNavigationClick(subcategory.href)}
-                                className="block text-left text-sm text-gray-600 hover:text-blue-600 transition-colors duration-300 py-1"
-                              >
-                                {subcategory.name}
-                              </button>
-                            ))}
-                          </div>
-                        )}
                       </div>
                     )
                   })}
-                  <button 
-                    onClick={() => handleNavigationClick("/products")}
-                    className="ml-4 text-left text-blue-600 hover:text-blue-700 transition-colors duration-300 py-1 font-medium"
-                  >
+                  <Link href="/products" className="ml-4 text-blue-600 hover:text-blue-700 transition-colors duration-300 py-1 font-medium">
                     {t("categories.viewAll")}
-                  </button>
+                  </Link>
                 </div>
                 
                 {user ? (
                   <>
-                    <button 
-                      onClick={() => handleNavigationClick("/profile")}
-                      className="text-left text-foreground hover:text-blue-600 transition-colors duration-300 py-2 font-medium"
-                    >
+                    <Link href="/profile" className="text-foreground hover:text-blue-600 transition-colors duration-300 py-2 font-medium">
                       {t("nav.profile")}
-                    </button>
+                    </Link>
                     <button
-                      onClick={() => {
-                        setMobileMenuOpen(false)
-                        logout()
-                      }}
+                      onClick={logout}
                       className="text-left text-foreground hover:text-blue-600 transition-colors duration-300 py-2 font-medium"
                     >
                       {t("nav.logout")}
@@ -433,18 +349,12 @@ export function Header() {
                   </>
                 ) : (
                   <>
-                    <button 
-                      onClick={() => handleNavigationClick("/login")}
-                      className="text-left text-foreground hover:text-blue-600 transition-colors duration-300 py-2 font-medium"
-                    >
+                    <Link href="/login" className="text-foreground hover:text-blue-600 transition-colors duration-300 py-2 font-medium">
                       {t("nav.login")}
-                    </button>
-                    <button 
-                      onClick={() => handleNavigationClick("/register")}
-                      className="text-left text-foreground hover:text-blue-600 transition-colors duration-300 py-2 font-medium"
-                    >
+                    </Link>
+                    <Link href="/register" className="text-foreground hover:text-blue-600 transition-colors duration-300 py-2 font-medium">
                       {t("nav.signup")}
-                    </button>
+                    </Link>
                   </>
                 )}
               </nav>

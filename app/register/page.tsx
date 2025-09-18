@@ -129,12 +129,12 @@ export default function RegisterPage() {
 
               <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-2">
-                  <Label htmlFor="firstName" className="text-sm font-semibold text-gray-700">{t("auth.firstName")}</Label>
+                  <Label htmlFor="firstName" className="text-sm font-semibold text-gray-700">First Name</Label>
                   <Input
                     id="firstName"
                     name="firstName"
                     type="text"
-                    placeholder={t("auth.firstNamePlaceholder")}
+                    placeholder="John"
                     value={formData.firstName}
                     onChange={handleChange}
                     required
@@ -143,12 +143,12 @@ export default function RegisterPage() {
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="lastName" className="text-sm font-semibold text-gray-700">{t("auth.lastName")}</Label>
+                  <Label htmlFor="lastName" className="text-sm font-semibold text-gray-700">Last Name</Label>
                   <Input
                     id="lastName"
                     name="lastName"
                     type="text"
-                    placeholder={t("auth.lastNamePlaceholder")}
+                    placeholder="Doe"
                     value={formData.lastName}
                     onChange={handleChange}
                     required
@@ -159,12 +159,12 @@ export default function RegisterPage() {
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="username" className="text-sm font-semibold text-gray-700">{t("auth.username")}</Label>
+                <Label htmlFor="username" className="text-sm font-semibold text-gray-700">Username</Label>
                 <Input
                   id="username"
                   name="username"
                   type="text"
-                  placeholder={t("auth.usernamePlaceholder")}
+                  placeholder="johndoe"
                   value={formData.username}
                   onChange={handleChange}
                   required
@@ -174,12 +174,12 @@ export default function RegisterPage() {
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="email" className="text-sm font-semibold text-gray-700">{t("auth.email")}</Label>
+                <Label htmlFor="email" className="text-sm font-semibold text-gray-700">Email</Label>
                 <Input
                   id="email"
                   name="email"
                   type="email"
-                  placeholder={t("auth.emailPlaceholder")}
+                  placeholder="john@example.com"
                   value={formData.email}
                   onChange={handleChange}
                   required
@@ -189,12 +189,12 @@ export default function RegisterPage() {
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="phoneNumber" className="text-sm font-semibold text-gray-700">{t("auth.phoneNumber")}</Label>
+                <Label htmlFor="phoneNumber" className="text-sm font-semibold text-gray-700">Phone Number</Label>
                 <Input
                   id="phoneNumber"
                   name="phoneNumber"
                   type="tel"
-                  placeholder={t("auth.phonePlaceholder")}
+                  placeholder="+213 123 456 789"
                   value={formData.phoneNumber}
                   onChange={handleChange}
                   required
@@ -204,12 +204,12 @@ export default function RegisterPage() {
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="address" className="text-sm font-semibold text-gray-700">{t("auth.address")}</Label>
+                <Label htmlFor="address" className="text-sm font-semibold text-gray-700">Address</Label>
                 <Input
                   id="address"
                   name="address"
                   type="text"
-                  placeholder={t("auth.addressPlaceholder")}
+                  placeholder="123 Main Street"
                   value={formData.address}
                   onChange={handleChange}
                   required
@@ -219,13 +219,13 @@ export default function RegisterPage() {
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="password" className="text-sm font-semibold text-gray-700">{t("auth.password")}</Label>
+                <Label htmlFor="password" className="text-sm font-semibold text-gray-700">Password</Label>
                 <div className="relative">
                   <Input
                     id="password"
                     name="password"
                     type={showPassword ? "text" : "password"}
-                    placeholder={t("auth.passwordPlaceholder")}
+                    placeholder="8+ chars with letters & numbers"
                     value={formData.password}
                     onChange={handleChange}
                     required
@@ -246,13 +246,13 @@ export default function RegisterPage() {
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="confirmPassword" className="text-sm font-semibold text-gray-700">{t("auth.confirmPassword")}</Label>
+                <Label htmlFor="confirmPassword" className="text-sm font-semibold text-gray-700">Confirm Password</Label>
                 <div className="relative">
                   <Input
                     id="confirmPassword"
                     name="confirmPassword"
                     type={showConfirmPassword ? "text" : "password"}
-                    placeholder={t("auth.confirmPasswordPlaceholder")}
+                    placeholder="Confirm your password"
                     value={formData.confirmPassword}
                     onChange={handleChange}
                     required
@@ -281,19 +281,19 @@ export default function RegisterPage() {
                 {loading ? (
                   <>
                     <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                    {t("auth.creatingAccount")}
+                    Creating Account...
                   </>
                 ) : (
-                  t("auth.createAccount")
+                  "Create Account"
                 )}
               </Button>
             </form>
 
             <div className="mt-6 text-center">
               <p className="text-sm text-muted-foreground">
-                {t("auth.hasAccount")}{" "}
+                Already have an account?{" "}
                 <Link href="/login" className="text-primary hover:underline font-medium">
-                  {t("auth.signInHere")}
+                  Sign in here
                 </Link>
               </p>
             </div>

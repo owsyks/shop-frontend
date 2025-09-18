@@ -197,8 +197,8 @@ export default function ContactPage() {
                     <Mail className="h-5 w-5 text-blue-600 mt-1" />
                     <div>
                       <p className="font-medium">{t("contact.emailLabel")}</p>
-                      <p className="text-gray-600">support@marketo.com</p>
-                      <p className="text-gray-600">info@marketo.com</p>
+                      <p className="text-gray-600">marketoshp@gmail.com</p>
+                      <p className="text-gray-600">marketoshp@gmail.com</p>
                     </div>
                   </div>
                   

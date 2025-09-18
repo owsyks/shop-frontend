@@ -6,10 +6,5 @@
   "devCommand": "npm run dev",
   "env": {
     "NEXT_PUBLIC_API_URL": "https://marketoo-c40becaacfb4.herokuapp.com"
-  },
-  "functions": {
-    "app/**/*.tsx": {
-      "maxDuration": 30
-    }
   }
 }
