@@ -92,9 +92,11 @@ export default function ProductDetailPage() {
       const productData = await productsAPI.getById(params.id as string)
       console.log("Product data received:", productData)
       console.log("Product images:", productData.images)
+      console.log("Number of images:", productData.images?.length || 0)
       setProduct(productData)
     } catch (error) {
       console.error("Error fetching product:", error)
+      console.log("Error details:", error)
       console.log("Falling back to mock product")
       const mockProduct = getMockProduct(Number(params.id))
       setProduct(mockProduct)

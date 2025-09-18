@@ -8,12 +8,12 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Separator } from "@/components/ui/separator"
 import { useCart } from "@/hooks/use-cart"
-import { Star, ShoppingCart, ArrowLeft, Minus, Plus } from "lucide-react"
+import { Star, ShoppingCart, ArrowLeft, Minus, Plus, ChevronLeft, ChevronRight } from "lucide-react"
 import { productsAPI } from "@/lib/api"
 import ProductRating from "@/components/product-rating"
 import Image from "next/image"
 import { LoadingSpinner } from "@/components/ui/loading"
-import { getProductImageUrl } from "@/lib/utils"
+import { getProductImageUrl, getBestProductImage, getAllProductImages } from "@/lib/utils"
 import { toast } from "sonner"
 import { generateProductStructuredData, generateProductMetaTags, generateBreadcrumbStructuredData, generateProductSlug } from "@/lib/seo"
 
@@ -24,6 +24,15 @@ interface Product {
   price: number
   stock: number
   image_url: string
+  images: Array<{
+    id: number
+    image: string
+    image_url: string
+    alt_text: string
+    order: number
+    is_primary: boolean
+    created_at: string
+  }>
   category: {
     id: number
     name: string
@@ -40,6 +49,7 @@ export default function ProductDetailPage() {
   const [product, setProduct] = useState<Product | null>(null)
   const [loading, setLoading] = useState(true)
   const [quantity, setQuantity] = useState(1)
+  const [selectedImageIndex, setSelectedImageIndex] = useState(0)
   const { addToCart } = useCart()
 
   useEffect(() => {
@@ -56,6 +66,26 @@ export default function ProductDetailPage() {
       }
     }
   }, [product, params.slug, router])
+
+  // Image navigation functions
+  const nextImage = () => {
+    if (product) {
+      const images = getAllProductImages(product)
+      setSelectedImageIndex((prev) => (prev + 1) % images.length)
+    }
+  }
+
+  const prevImage = () => {
+    if (product) {
+      const images = getAllProductImages(product)
+      setSelectedImageIndex((prev) => (prev - 1 + images.length) % images.length)
+    }
+  }
+
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === 'ArrowLeft') prevImage()
+    if (e.key === 'ArrowRight') nextImage()
+  }
 
   const fetchProduct = async () => {
     try {
@@ -79,6 +109,17 @@ export default function ProductDetailPage() {
           "Experience superior sound quality with these premium wireless headphones. Featuring advanced noise cancellation technology, comfortable over-ear design, and up to 30 hours of battery life. Perfect for music lovers, professionals, and anyone who values high-quality audio.",
         price: 199.99,
         image_url: "/wireless-headphones.png",
+        images: [
+          {
+            id: 1,
+            image: "/wireless-headphones.png",
+            image_url: "/wireless-headphones.png",
+            alt_text: "Wireless Headphones",
+            order: 0,
+            is_primary: true,
+            created_at: "2024-01-01T00:00:00Z"
+          }
+        ],
         category: {
           id: 1,
           name: "Electronics",
@@ -96,6 +137,17 @@ export default function ProductDetailPage() {
           "Track your fitness goals and stay connected with this advanced smartwatch. Monitor heart rate, steps, sleep patterns, and more. Water-resistant design perfect for workouts and daily wear.",
         price: 299.99,
         image_url: "/fitness-smartwatch.png",
+        images: [
+          {
+            id: 2,
+            image: "/fitness-smartwatch.png",
+            image_url: "/fitness-smartwatch.png",
+            alt_text: "Smart Fitness Watch",
+            order: 0,
+            is_primary: true,
+            created_at: "2024-01-01T00:00:00Z"
+          }
+        ],
         category: {
           id: 1,
           name: "Electronics",
@@ -113,6 +165,17 @@ export default function ProductDetailPage() {
           "Durable and stylish backpack designed for laptops up to 15.6 inches. Multiple compartments for organization, padded laptop sleeve, and comfortable shoulder straps make it perfect for work, school, or travel.",
         price: 79.99,
         image_url: "/laptop-backpack.png",
+        images: [
+          {
+            id: 3,
+            image: "/laptop-backpack.png",
+            image_url: "/laptop-backpack.png",
+            alt_text: "Laptop Backpack",
+            order: 0,
+            is_primary: true,
+            created_at: "2024-01-01T00:00:00Z"
+          }
+        ],
         category: {
           id: 2,
           name: "Accessories",
@@ -130,6 +193,17 @@ export default function ProductDetailPage() {
           "Portable Bluetooth speaker with exceptional sound quality. Compact design with powerful bass, long battery life, and water-resistant construction. Perfect for outdoor adventures or home entertainment.",
         price: 149.99,
         image_url: "/bluetooth-speaker.png",
+        images: [
+          {
+            id: 4,
+            image: "/bluetooth-speaker.png",
+            image_url: "/bluetooth-speaker.png",
+            alt_text: "Bluetooth Speaker",
+            order: 0,
+            is_primary: true,
+            created_at: "2024-01-01T00:00:00Z"
+          }
+        ],
         category: {
           id: 1,
           name: "Electronics",
@@ -149,6 +223,17 @@ export default function ProductDetailPage() {
         description: "This product could not be found.",
         price: 0,
         image_url: "/placeholder.svg?height=400&width=400",
+        images: [
+          {
+            id: 0,
+            image: "/placeholder.svg?height=400&width=400",
+            image_url: "/placeholder.svg?height=400&width=400",
+            alt_text: "Product Not Found",
+            order: 0,
+            is_primary: true,
+            created_at: "2024-01-01T00:00:00Z"
+          }
+        ],
         category: {
           id: 0,
           name: "Unknown",
@@ -169,7 +254,7 @@ export default function ProductDetailPage() {
           id: product.id,
           name: product.name,
           price: product.price,
-          image: product.image_url,
+          image: getBestProductImage(product),
         }, (productName) => {
           if (i === quantity - 1) { // Only show toast on the last iteration
             toast.success("Added to Cart!", {
@@ -257,11 +342,15 @@ export default function ProductDetailPage() {
 
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-            {/* Product Image */}
+            {/* Product Image Gallery */}
             <div className="space-y-4">
-              <div className="aspect-square overflow-hidden rounded-xl bg-white shadow-lg">
+              <div 
+                className="aspect-square overflow-hidden rounded-xl bg-white shadow-lg relative group"
+                onKeyDown={handleKeyDown}
+                tabIndex={0}
+              >
                 <Image 
-                  src={getProductImageUrl(product.image_url)} 
+                  src={getAllProductImages(product)[selectedImageIndex] || getBestProductImage(product)} 
                   alt={product.name} 
                   width={500}
                   height={500}
@@ -271,6 +360,31 @@ export default function ProductDetailPage() {
                     target.src = "/placeholder.svg";
                   }}
                 />
+                
+                {/* Image Navigation Arrows */}
+                {getAllProductImages(product).length > 1 && (
+                  <>
+                    <button
+                      onClick={prevImage}
+                      className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-200"
+                      aria-label="Previous image"
+                    >
+                      <ChevronLeft className="h-6 w-6" />
+                    </button>
+                    <button
+                      onClick={nextImage}
+                      className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-200"
+                      aria-label="Next image"
+                    >
+                      <ChevronRight className="h-6 w-6" />
+                    </button>
+                    
+                    {/* Image Counter */}
+                    <div className="absolute bottom-4 right-4 bg-black/50 text-white px-3 py-1 rounded-full text-sm">
+                      {selectedImageIndex + 1} / {getAllProductImages(product).length}
+                    </div>
+                  </>
+                )}
               </div>
             </div>
 
