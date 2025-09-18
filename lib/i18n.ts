@@ -65,6 +65,14 @@ const resources = {
       "categories.booksOffice.school": "School Supplies",
       "categories.booksOffice.stationery": "Stationery",
 
+      // Cosmetics & Beauty
+      "categories.cosmeticsBeauty": "Cosmetics & Beauty",
+      "categories.cosmeticsBeauty.makeup": "Makeup",
+      "categories.cosmeticsBeauty.skincare": "Skincare",
+      "categories.cosmeticsBeauty.hairCare": "Hair Care",
+      "categories.cosmeticsBeauty.fragrances": "Fragrances",
+      "categories.cosmeticsBeauty.personalCare": "Personal Care",
+
       // Homepage
       "hero.title": "Discover Amazing Products",
       "hero.subtitle":
@@ -289,6 +297,14 @@ const resources = {
       "categories.booksOffice.school": "مستلزمات المدرسة",
       "categories.booksOffice.stationery": "الأدوات المكتبية",
 
+      // Cosmetics & Beauty
+      "categories.cosmeticsBeauty": "مستحضرات التجميل والجمال",
+      "categories.cosmeticsBeauty.makeup": "المكياج",
+      "categories.cosmeticsBeauty.skincare": "العناية بالبشرة",
+      "categories.cosmeticsBeauty.hairCare": "العناية بالشعر",
+      "categories.cosmeticsBeauty.fragrances": "العطور",
+      "categories.cosmeticsBeauty.personalCare": "العناية الشخصية",
+
       // Homepage
       "hero.title": "اكتشف منتجات مذهلة",
       "hero.subtitle":
@@ -512,6 +528,14 @@ const resources = {
       "categories.booksOffice.furniture": "Mobilier de Bureau",
       "categories.booksOffice.school": "Fournitures Scolaires",
       "categories.booksOffice.stationery": "Papeterie",
+
+      // Cosmetics & Beauty
+      "categories.cosmeticsBeauty": "Cosmétiques et Beauté",
+      "categories.cosmeticsBeauty.makeup": "Maquillage",
+      "categories.cosmeticsBeauty.skincare": "Soins de la Peau",
+      "categories.cosmeticsBeauty.hairCare": "Soins des Cheveux",
+      "categories.cosmeticsBeauty.fragrances": "Parfums",
+      "categories.cosmeticsBeauty.personalCare": "Soins Personnels",
 
       // Homepage
       "hero.title": "Découvrez des Produits Incroyables",

@@ -2,7 +2,7 @@
 
 import type React from "react"
 import Link from "next/link"
-import { ShoppingCart, User, Search, Menu, X, ChevronDown, Smartphone, Laptop, Headphones, Home, Shirt, Watch, Gamepad2, Car, BookOpen } from "lucide-react"
+import { ShoppingCart, User, Search, Menu, X, ChevronDown, Smartphone, Laptop, Headphones, Home, Shirt, Watch, Gamepad2, Car, BookOpen, Sparkles } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { useAuth } from "@/hooks/use-auth"
@@ -94,6 +94,18 @@ export function Header() {
         { name: t("categories.booksOffice.furniture"), href: "/products?category=602" }, // Office Furniture ID
         { name: t("categories.booksOffice.school"), href: "/products?category=603" }, // School Supplies ID
         { name: t("categories.booksOffice.stationery"), href: "/products?category=604" }, // Stationery ID
+      ]
+    },
+    {
+      name: t("categories.cosmeticsBeauty"),
+      icon: Sparkles,
+      href: "/products?category=7", // Cosmetics & Beauty ID
+      subcategories: [
+        { name: t("categories.cosmeticsBeauty.makeup"), href: "/products?category=701" }, // Makeup ID
+        { name: t("categories.cosmeticsBeauty.skincare"), href: "/products?category=702" }, // Skincare ID
+        { name: t("categories.cosmeticsBeauty.hairCare"), href: "/products?category=703" }, // Hair Care ID
+        { name: t("categories.cosmeticsBeauty.fragrances"), href: "/products?category=704" }, // Fragrances ID
+        { name: t("categories.cosmeticsBeauty.personalCare"), href: "/products?category=705" }, // Personal Care ID
       ]
     },
   ]
