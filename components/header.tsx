@@ -188,10 +188,13 @@ export function Header() {
                         <div key={index} className="p-4 hover:bg-gray-50 transition-colors duration-200">
                           <Link 
                             href={category.href}
-                            className="flex items-center space-x-3 text-gray-900 hover:text-blue-600 transition-colors duration-200 group"
+                            className="flex items-center justify-between text-gray-900 hover:text-blue-600 transition-colors duration-200 group"
                           >
-                            <IconComponent className="h-5 w-5 text-blue-600 group-hover:scale-110 transition-transform duration-200" />
-                            <span className="font-semibold">{category.name}</span>
+                            <div className="flex items-center space-x-3">
+                              <IconComponent className="h-5 w-5 text-blue-600 group-hover:scale-110 transition-transform duration-200" />
+                              <span className="font-semibold">{category.name}</span>
+                            </div>
+                            <ChevronDown className="h-4 w-4 text-gray-400 rotate-[-90deg]" />
                           </Link>
                           <div className="mt-2 space-y-1">
                             {category.subcategories.map((subcategory, subIndex) => (
