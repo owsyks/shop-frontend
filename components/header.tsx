@@ -186,6 +186,14 @@ export function Header() {
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 transition-all duration-300 group-hover:w-full"></span>
             </Link>
             
+            <Link 
+              href="/services" 
+              className="relative text-foreground hover:text-blue-600 transition-colors duration-300 font-medium group"
+            >
+              {t("nav.services")}
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 transition-all duration-300 group-hover:w-full"></span>
+            </Link>
+            
             {/* Categories Dropdown */}
             <div 
               className="relative"
@@ -341,6 +349,10 @@ export function Header() {
               <nav className="flex flex-col space-y-2">
                 <Link href="/" className="text-foreground hover:text-blue-600 transition-colors duration-300 py-2 font-medium" onClick={() => setMobileMenuOpen(false)}>
                   {t("nav.home")}
+                </Link>
+                
+                <Link href="/services" className="text-foreground hover:text-blue-600 transition-colors duration-300 py-2 font-medium" onClick={() => setMobileMenuOpen(false)}>
+                  {t("nav.services")}
                 </Link>
                 
                 {/* Mobile Categories */}

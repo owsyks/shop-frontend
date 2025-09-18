@@ -8,6 +8,7 @@ const resources = {
     translation: {
       // Navigation
       "nav.home": "Home",
+      "nav.services": "Services",
       "nav.products": "Products",
       "nav.delivery": "Delivery",
       "nav.login": "Login",
@@ -240,6 +241,7 @@ const resources = {
     translation: {
       // Navigation
       "nav.home": "الرئيسية",
+      "nav.services": "الخدمات",
       "nav.products": "المنتجات",
       "nav.delivery": "التوصيل",
       "nav.login": "تسجيل الدخول",
@@ -472,6 +474,7 @@ const resources = {
     translation: {
       // Navigation
       "nav.home": "Accueil",
+      "nav.services": "Services",
       "nav.products": "Produits",
       "nav.delivery": "Livraison",
       "nav.login": "Connexion",
