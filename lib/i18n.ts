@@ -97,6 +97,7 @@ const resources = {
       // Cart
       "cart.title": "Shopping Cart",
       "cart.empty": "Your cart is empty",
+      "cart.emptyDesc": "Looks like you haven't added any items to your cart yet. Start shopping to fill it up!",
       "cart.startShopping": "Start Shopping",
       "cart.items": "Items in your cart",
       "cart.clearAll": "Clear all",
@@ -149,6 +150,15 @@ const resources = {
       "auth.invalidCredentials": "Invalid email or password. Please try again.",
       "auth.passwordMismatch": "Passwords do not match",
       "auth.passwordLength": "Password must be at least 6 characters long",
+      "auth.firstName": "First Name",
+      "auth.lastName": "Last Name",
+      "auth.username": "Username",
+      "auth.phoneNumber": "Phone Number",
+      "auth.address": "Address",
+      "auth.confirmPassword": "Confirm Password",
+      "auth.creatingAccount": "Creating Account...",
+      "auth.hasAccount": "Already have an account?",
+      "auth.signInHere": "Sign in here",
 
       // Profile
       "profile.signOut": "Sign Out",
@@ -316,6 +326,7 @@ const resources = {
       // Cart
       "cart.title": "سلة التسوق",
       "cart.empty": "سلتك فارغة",
+      "cart.emptyDesc": "يبدو أنك لم تضيف أي عناصر إلى سلتك بعد. ابدأ التسوق لملئها!",
       "cart.startShopping": "ابدأ التسوق",
       "cart.items": "العناصر في سلتك",
       "cart.clearAll": "مسح الكل",
@@ -368,6 +379,15 @@ const resources = {
       "auth.invalidCredentials": "بريد إلكتروني أو كلمة مرور غير صحيحة. حاول مرة أخرى.",
       "auth.passwordMismatch": "كلمات المرور غير متطابقة",
       "auth.passwordLength": "يجب أن تكون كلمة المرور 6 أحرف على الأقل",
+      "auth.firstName": "الاسم الأول",
+      "auth.lastName": "اسم العائلة",
+      "auth.username": "اسم المستخدم",
+      "auth.phoneNumber": "رقم الهاتف",
+      "auth.address": "العنوان",
+      "auth.confirmPassword": "تأكيد كلمة المرور",
+      "auth.creatingAccount": "جاري إنشاء الحساب...",
+      "auth.hasAccount": "لديك حساب بالفعل؟",
+      "auth.signInHere": "سجل دخولك هنا",
 
       // Profile
       "profile.signOut": "تسجيل الخروج",
@@ -535,6 +555,8 @@ const resources = {
       // Cart
       "cart.title": "Panier d'Achat",
       "cart.empty": "Votre panier est vide",
+      "cart.emptyDesc": "Il semble que vous n'ayez pas encore ajouté d'articles à votre panier. Commencez vos achats pour le remplir !",
+      "cart.startShopping": "Commencer les Achats",
       "cart.subtotal": "Sous-total",
       "cart.total": "Total",
       "cart.checkout": "Procéder au Paiement",
@@ -575,6 +597,14 @@ const resources = {
       "auth.invalidCredentials": "Email ou mot de passe invalide",
       "auth.emailExists": "L'email existe déjà",
       "auth.passwordsNotMatch": "Les mots de passe ne correspondent pas",
+      "auth.firstName": "Prénom",
+      "auth.lastName": "Nom de Famille",
+      "auth.username": "Nom d'Utilisateur",
+      "auth.phoneNumber": "Numéro de Téléphone",
+      "auth.address": "Adresse",
+      "auth.creatingAccount": "Création du Compte...",
+      "auth.hasAccount": "Vous avez déjà un compte ?",
+      "auth.signInHere": "Connectez-vous ici",
 
       // Profile
       "profile.title": "Mon Profil",

@@ -7,10 +7,12 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Separator } from "@/components/ui/separator"
 import { useCart } from "@/hooks/use-cart"
 import { Minus, Plus, Trash2, ShoppingBag, ArrowRight } from "lucide-react"
+import { useTranslation } from "react-i18next"
 
 export default function CartPage() {
   const { items, updateQuantity, removeFromCart, getTotalPrice, getTotalItems, clearCart } = useCart()
   const [isClearing, setIsClearing] = useState(false)
+  const { t } = useTranslation()
 
   const handleClearCart = async () => {
     setIsClearing(true)
@@ -32,13 +34,13 @@ export default function CartPage() {
           <div className="w-24 h-24 bg-muted rounded-full flex items-center justify-center mx-auto mb-6">
             <ShoppingBag className="h-12 w-12 text-muted-foreground" />
           </div>
-          <h1 className="text-3xl font-bold mb-4">Your cart is empty</h1>
+          <h1 className="text-3xl font-bold mb-4">{t("cart.empty")}</h1>
           <p className="text-muted-foreground mb-8">
-            Looks like you haven't added any items to your cart yet. Start shopping to fill it up!
+            {t("cart.emptyDesc")}
           </p>
           <Link href="/products">
             <Button size="lg">
-              Start Shopping
+              {t("cart.startShopping")}
               <ArrowRight className="ml-2 h-5 w-5" />
             </Button>
           </Link>

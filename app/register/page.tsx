@@ -129,12 +129,12 @@ export default function RegisterPage() {
 
               <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-2">
-                  <Label htmlFor="firstName" className="text-sm font-semibold text-gray-700">First Name</Label>
+                  <Label htmlFor="firstName" className="text-sm font-semibold text-gray-700">{t("auth.firstName")}</Label>
                   <Input
                     id="firstName"
                     name="firstName"
                     type="text"
-                    placeholder="John"
+                    placeholder={t("auth.firstName")}
                     value={formData.firstName}
                     onChange={handleChange}
                     required
@@ -143,12 +143,12 @@ export default function RegisterPage() {
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="lastName" className="text-sm font-semibold text-gray-700">Last Name</Label>
+                  <Label htmlFor="lastName" className="text-sm font-semibold text-gray-700">{t("auth.lastName")}</Label>
                   <Input
                     id="lastName"
                     name="lastName"
                     type="text"
-                    placeholder="Doe"
+                    placeholder={t("auth.lastName")}
                     value={formData.lastName}
                     onChange={handleChange}
                     required
@@ -159,12 +159,12 @@ export default function RegisterPage() {
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="username" className="text-sm font-semibold text-gray-700">Username</Label>
+                <Label htmlFor="username" className="text-sm font-semibold text-gray-700">{t("auth.username")}</Label>
                 <Input
                   id="username"
                   name="username"
                   type="text"
-                  placeholder="johndoe"
+                  placeholder={t("auth.username")}
                   value={formData.username}
                   onChange={handleChange}
                   required
@@ -174,12 +174,12 @@ export default function RegisterPage() {
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="email" className="text-sm font-semibold text-gray-700">Email</Label>
+                <Label htmlFor="email" className="text-sm font-semibold text-gray-700">{t("auth.email")}</Label>
                 <Input
                   id="email"
                   name="email"
                   type="email"
-                  placeholder="john@example.com"
+                  placeholder={t("auth.email")}
                   value={formData.email}
                   onChange={handleChange}
                   required
@@ -189,7 +189,7 @@ export default function RegisterPage() {
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="phoneNumber" className="text-sm font-semibold text-gray-700">Phone Number</Label>
+                <Label htmlFor="phoneNumber" className="text-sm font-semibold text-gray-700">{t("auth.phoneNumber")}</Label>
                 <Input
                   id="phoneNumber"
                   name="phoneNumber"
@@ -204,12 +204,12 @@ export default function RegisterPage() {
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="address" className="text-sm font-semibold text-gray-700">Address</Label>
+                <Label htmlFor="address" className="text-sm font-semibold text-gray-700">{t("auth.address")}</Label>
                 <Input
                   id="address"
                   name="address"
                   type="text"
-                  placeholder="123 Main Street"
+                  placeholder={t("auth.address")}
                   value={formData.address}
                   onChange={handleChange}
                   required
@@ -219,13 +219,13 @@ export default function RegisterPage() {
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="password" className="text-sm font-semibold text-gray-700">Password</Label>
+                <Label htmlFor="password" className="text-sm font-semibold text-gray-700">{t("auth.password")}</Label>
                 <div className="relative">
                   <Input
                     id="password"
                     name="password"
                     type={showPassword ? "text" : "password"}
-                    placeholder="8+ chars with letters & numbers"
+                    placeholder={t("auth.password")}
                     value={formData.password}
                     onChange={handleChange}
                     required
@@ -246,13 +246,13 @@ export default function RegisterPage() {
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="confirmPassword" className="text-sm font-semibold text-gray-700">Confirm Password</Label>
+                <Label htmlFor="confirmPassword" className="text-sm font-semibold text-gray-700">{t("auth.confirmPassword")}</Label>
                 <div className="relative">
                   <Input
                     id="confirmPassword"
                     name="confirmPassword"
                     type={showConfirmPassword ? "text" : "password"}
-                    placeholder="Confirm your password"
+                    placeholder={t("auth.confirmPassword")}
                     value={formData.confirmPassword}
                     onChange={handleChange}
                     required
@@ -281,19 +281,19 @@ export default function RegisterPage() {
                 {loading ? (
                   <>
                     <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                    Creating Account...
+                    {t("auth.creatingAccount")}
                   </>
                 ) : (
-                  "Create Account"
+                  t("auth.signUp")
                 )}
               </Button>
             </form>
 
             <div className="mt-6 text-center">
               <p className="text-sm text-muted-foreground">
-                Already have an account?{" "}
+                {t("auth.hasAccount")}{" "}
                 <Link href="/login" className="text-primary hover:underline font-medium">
-                  Sign in here
+                  {t("auth.signInHere")}
                 </Link>
               </p>
             </div>
