@@ -21,12 +21,14 @@ export function Header() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [categoriesOpen, setCategoriesOpen] = useState(false)
   const [hoverTimeout, setHoverTimeout] = useState<NodeJS.Timeout | null>(null)
+  const [expandedCategories, setExpandedCategories] = useState<Set<number>>(new Set())
   const { t } = useTranslation()
   const router = useRouter()
 
   // Category data with icons and subcategories - using correct category IDs
   const categories = [
     {
+      id: 1,
       name: t("categories.electronics"),
       icon: Smartphone,
       href: "/products?category=1", // Electronics ID
@@ -39,6 +41,7 @@ export function Header() {
       ]
     },
     {
+      id: 2,
       name: t("categories.fashion"),
       icon: Shirt,
       href: "/products?category=2", // Fashion ID
@@ -51,6 +54,7 @@ export function Header() {
       ]
     },
     {
+      id: 3,
       name: t("categories.homeKitchen"),
       icon: Home,
       href: "/products?category=3", // Home & Kitchen ID
@@ -63,6 +67,7 @@ export function Header() {
       ]
     },
     {
+      id: 4,
       name: t("categories.sportsGaming"),
       icon: Gamepad2,
       href: "/products?category=4", // Sports & Gaming ID
@@ -75,6 +80,7 @@ export function Header() {
       ]
     },
     {
+      id: 5,
       name: t("categories.automotive"),
       icon: Car,
       href: "/products?category=5", // Automotive ID
@@ -86,6 +92,7 @@ export function Header() {
       ]
     },
     {
+      id: 6,
       name: t("categories.booksOffice"),
       icon: BookOpen,
       href: "/products?category=6", // Books & Office ID
@@ -97,6 +104,7 @@ export function Header() {
       ]
     },
     {
+      id: 7,
       name: t("categories.cosmeticsBeauty"),
       icon: Sparkles,
       href: "/products?category=7", // Cosmetics & Beauty ID
@@ -123,6 +131,18 @@ export function Header() {
       setCategoriesOpen(false)
     }, 200) // 200ms delay before closing
     setHoverTimeout(timeout)
+  }
+
+  const toggleCategory = (categoryId: number) => {
+    setExpandedCategories(prev => {
+      const newSet = new Set(prev)
+      if (newSet.has(categoryId)) {
+        newSet.delete(categoryId)
+      } else {
+        newSet.add(categoryId)
+      }
+      return newSet
+    })
   }
 
   useEffect(() => {
@@ -184,29 +204,37 @@ export function Header() {
                   <div className="grid grid-cols-2 gap-0">
                     {categories.map((category, index) => {
                       const IconComponent = category.icon
+                      const isExpanded = expandedCategories.has(category.id)
                       return (
                         <div key={index} className="p-4 hover:bg-gray-50 transition-colors duration-200">
-                          <Link 
-                            href={category.href}
-                            className="flex items-center justify-between text-gray-900 hover:text-blue-600 transition-colors duration-200 group"
-                          >
-                            <div className="flex items-center space-x-3">
+                          <div className="flex items-center justify-between text-gray-900 hover:text-blue-600 transition-colors duration-200 group">
+                            <Link 
+                              href={category.href}
+                              className="flex items-center space-x-3 flex-1"
+                            >
                               <IconComponent className="h-5 w-5 text-blue-600 group-hover:scale-110 transition-transform duration-200" />
                               <span className="font-semibold">{category.name}</span>
-                            </div>
-                            <ChevronDown className="h-4 w-4 text-gray-400" />
-                          </Link>
-                          <div className="mt-2 space-y-1">
-                            {category.subcategories.map((subcategory, subIndex) => (
-                              <Link
-                                key={subIndex}
-                                href={subcategory.href}
-                                className="block text-sm text-gray-600 hover:text-blue-600 transition-colors duration-200 py-1 pl-8"
-                              >
-                                {subcategory.name}
-                              </Link>
-                            ))}
+                            </Link>
+                            <button
+                              onClick={() => toggleCategory(category.id)}
+                              className="p-1 hover:bg-gray-200 rounded transition-colors duration-200"
+                            >
+                              <ChevronDown className={`h-4 w-4 text-gray-400 transition-transform duration-200 ${isExpanded ? 'rotate-180' : ''}`} />
+                            </button>
                           </div>
+                          {isExpanded && (
+                            <div className="mt-2 space-y-1">
+                              {category.subcategories.map((subcategory, subIndex) => (
+                                <Link
+                                  key={subIndex}
+                                  href={subcategory.href}
+                                  className="block text-sm text-gray-600 hover:text-blue-600 transition-colors duration-200 py-1 pl-8"
+                                >
+                                  {subcategory.name}
+                                </Link>
+                              ))}
+                            </div>
+                          )}
                         </div>
                       )
                     })}
