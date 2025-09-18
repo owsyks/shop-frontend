@@ -339,7 +339,7 @@ export function Header() {
 
               {/* Mobile Navigation */}
               <nav className="flex flex-col space-y-2">
-                <Link href="/" className="text-foreground hover:text-blue-600 transition-colors duration-300 py-2 font-medium">
+                <Link href="/" className="text-foreground hover:text-blue-600 transition-colors duration-300 py-2 font-medium" onClick={() => setMobileMenuOpen(false)}>
                   {t("nav.home")}
                 </Link>
                 
@@ -350,41 +350,61 @@ export function Header() {
                   </div>
                   {categories.map((category, index) => {
                     const IconComponent = category.icon
+                    const isExpanded = expandedCategories.has(category.id)
                     return (
                       <div key={index} className="ml-4 space-y-1">
-                        <Link 
-                          href={category.href}
-                          className="flex items-center space-x-2 text-foreground hover:text-blue-600 transition-colors duration-300 py-1 font-medium"
-                        >
-                          <IconComponent className="h-4 w-4 text-blue-600" />
-                          <span>{category.name}</span>
-                        </Link>
-                        <div className="ml-6 space-y-1">
-                          {category.subcategories.map((subcategory, subIndex) => (
-                            <Link
-                              key={subIndex}
-                              href={subcategory.href}
-                              className="block text-sm text-gray-600 hover:text-blue-600 transition-colors duration-300 py-1"
-                            >
-                              {subcategory.name}
-                            </Link>
-                          ))}
+                        <div className="flex items-center justify-between">
+                          <Link 
+                            href={category.href}
+                            onClick={() => setMobileMenuOpen(false)}
+                            className="flex items-center space-x-2 text-foreground hover:text-blue-600 transition-colors duration-300 py-1 font-medium"
+                          >
+                            <IconComponent className="h-4 w-4 text-blue-600" />
+                            <span>{category.name}</span>
+                          </Link>
+                          <button
+                            onClick={() => toggleCategory(category.id)}
+                            className="p-1 hover:bg-gray-200 rounded transition-colors duration-200"
+                          >
+                            <ChevronDown className={`h-4 w-4 text-gray-400 transition-transform duration-200 ${isExpanded ? 'rotate-180' : ''}`} />
+                          </button>
                         </div>
+                        {isExpanded && (
+                          <div className="ml-6 space-y-1">
+                            {category.subcategories.map((subcategory, subIndex) => (
+                              <Link
+                                key={subIndex}
+                                href={subcategory.href}
+                                onClick={() => setMobileMenuOpen(false)}
+                                className="block text-sm text-gray-600 hover:text-blue-600 transition-colors duration-300 py-1"
+                              >
+                                {subcategory.name}
+                              </Link>
+                            ))}
+                          </div>
+                        )}
                       </div>
                     )
                   })}
-                  <Link href="/products" className="ml-4 text-blue-600 hover:text-blue-700 transition-colors duration-300 py-1 font-medium">
+                  <Link 
+                    href="/products" 
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="ml-4 text-blue-600 hover:text-blue-700 transition-colors duration-300 py-1 font-medium"
+                  >
                     {t("categories.viewAll")}
                   </Link>
                 </div>
                 
                 {user ? (
                   <>
-                    <Link href="/profile" className="text-foreground hover:text-blue-600 transition-colors duration-300 py-2 font-medium">
+                    <Link href="/profile" className="text-foreground hover:text-blue-600 transition-colors duration-300 py-2 font-medium" onClick={() => setMobileMenuOpen(false)}>
                       {t("nav.profile")}
                     </Link>
                     <button
-                      onClick={logout}
+                      onClick={() => {
+                        logout()
+                        setMobileMenuOpen(false)
+                      }}
                       className="text-left text-foreground hover:text-blue-600 transition-colors duration-300 py-2 font-medium"
                     >
                       {t("nav.logout")}
@@ -392,10 +412,10 @@ export function Header() {
                   </>
                 ) : (
                   <>
-                    <Link href="/login" className="text-foreground hover:text-blue-600 transition-colors duration-300 py-2 font-medium">
+                    <Link href="/login" className="text-foreground hover:text-blue-600 transition-colors duration-300 py-2 font-medium" onClick={() => setMobileMenuOpen(false)}>
                       {t("nav.login")}
                     </Link>
-                    <Link href="/register" className="text-foreground hover:text-blue-600 transition-colors duration-300 py-2 font-medium">
+                    <Link href="/register" className="text-foreground hover:text-blue-600 transition-colors duration-300 py-2 font-medium" onClick={() => setMobileMenuOpen(false)}>
                       {t("nav.signup")}
                     </Link>
                   </>
