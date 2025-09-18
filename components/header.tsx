@@ -194,7 +194,7 @@ export function Header() {
                               <IconComponent className="h-5 w-5 text-blue-600 group-hover:scale-110 transition-transform duration-200" />
                               <span className="font-semibold">{category.name}</span>
                             </div>
-                            <ChevronDown className="h-4 w-4 text-gray-400 rotate-[-90deg]" />
+                            <ChevronDown className="h-4 w-4 text-gray-400" />
                           </Link>
                           <div className="mt-2 space-y-1">
                             {category.subcategories.map((subcategory, subIndex) => (
