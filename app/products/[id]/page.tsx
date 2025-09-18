@@ -8,7 +8,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Separator } from "@/components/ui/separator"
 import { useCart } from "@/hooks/use-cart"
-import { Star, ShoppingCart, ArrowLeft, Minus, Plus } from "lucide-react"
+import { Star, ShoppingCart, ArrowLeft, Minus, Plus, ChevronLeft, ChevronRight } from "lucide-react"
 import { productsAPI } from "@/lib/api"
 import ProductRating from "@/components/product-rating"
 import Image from "next/image"
@@ -55,6 +55,26 @@ export default function ProductDetailPage() {
   useEffect(() => {
     fetchProduct()
   }, [params.id])
+
+  // Image navigation functions
+  const nextImage = () => {
+    if (product) {
+      const images = getAllProductImages(product)
+      setSelectedImageIndex((prev) => (prev + 1) % images.length)
+    }
+  }
+
+  const prevImage = () => {
+    if (product) {
+      const images = getAllProductImages(product)
+      setSelectedImageIndex((prev) => (prev - 1 + images.length) % images.length)
+    }
+  }
+
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === 'ArrowLeft') prevImage()
+    if (e.key === 'ArrowRight') nextImage()
+  }
 
   const fetchProduct = async () => {
     try {
@@ -309,11 +329,11 @@ export default function ProductDetailPage() {
           Back to Products
         </Button>
 
-        <div className="max-w-6xl mx-auto">
+        <div className="max-w-6xl mx-auto" onKeyDown={handleKeyDown} tabIndex={0}>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {/* Product Image */}
             <div className="space-y-4">
-              <div className="aspect-square overflow-hidden rounded-xl bg-white shadow-lg">
+              <div className="aspect-square overflow-hidden rounded-xl bg-white shadow-lg relative group">
                 <Image 
                   src={getAllProductImages(product)[selectedImageIndex] || getBestProductImage(product)} 
                   alt={product.name} 
@@ -325,6 +345,31 @@ export default function ProductDetailPage() {
                     target.src = "/placeholder.svg";
                   }}
                 />
+                
+                {/* Arrow Navigation */}
+                {getAllProductImages(product).length > 1 && (
+                  <>
+                    <button
+                      onClick={prevImage}
+                      className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-200"
+                      aria-label="Previous image"
+                    >
+                      <ChevronLeft className="h-6 w-6" />
+                    </button>
+                    <button
+                      onClick={nextImage}
+                      className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-200"
+                      aria-label="Next image"
+                    >
+                      <ChevronRight className="h-6 w-6" />
+                    </button>
+                    
+                    {/* Image Counter */}
+                    <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-black/50 text-white px-3 py-1 rounded-full text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                      {selectedImageIndex + 1} / {getAllProductImages(product).length}
+                    </div>
+                  </>
+                )}
               </div>
               
               {/* Image Gallery */}
