@@ -16,6 +16,7 @@ import { useAuth } from "@/hooks/use-auth"
 import { Loader2, Truck, Shield, ArrowLeft, Banknote } from "lucide-react"
 import { ordersAPI } from "@/lib/api"
 import { algeriaWilayas, deliveryOptions, type Wilaya, type Commune } from "@/lib/algeria-data"
+import { useTranslation } from "react-i18next"
 
 interface CheckoutForm {
   fullName: string
@@ -31,6 +32,7 @@ export default function CheckoutPage() {
   const { items, getTotalPrice, getTotalItems, clearCart } = useCart()
   const { user } = useAuth()
   const router = useRouter()
+  const { t } = useTranslation()
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState("")
   const [success, setSuccess] = useState(false)
