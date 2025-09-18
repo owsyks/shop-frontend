@@ -2,6 +2,29 @@ import { config } from "./config"
 
 const API_BASE_URL = config.API_BASE_URL
 
+// Utility function to get the best image for a product
+export const getProductImage = (product: Product): string => {
+  // First try to get primary image
+  const primaryImage = product.images?.find(img => img.is_primary)
+  if (primaryImage?.image_url) {
+    return primaryImage.image_url
+  }
+  
+  // Then try to get first image
+  const firstImage = product.images?.[0]?.image_url
+  if (firstImage) {
+    return firstImage
+  }
+  
+  // Fallback to single image_url
+  return product.image_url || '/placeholder.svg'
+}
+
+// Utility function to get all images for a product
+export const getProductImages = (product: Product): ProductImage[] => {
+  return product.images || []
+}
+
 // TypeScript interfaces for API responses
 export interface User {
   id: number
@@ -28,6 +51,16 @@ export interface Category {
   slug: string
 }
 
+export interface ProductImage {
+  id: number
+  image: string
+  image_url: string
+  alt_text: string
+  order: number
+  is_primary: boolean
+  created_at: string
+}
+
 export interface Product {
   id: number
   name: string
@@ -35,6 +68,7 @@ export interface Product {
   price: number
   stock: number
   image_url: string
+  images: ProductImage[]
   category: Category
   is_active: boolean
   created_at: string

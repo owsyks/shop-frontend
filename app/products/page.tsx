@@ -14,7 +14,7 @@ import { Star, Search, Filter, ShoppingCart } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
 import { LoadingSpinner } from "@/components/ui/loading"
-import { getProductImageUrl } from "@/lib/utils"
+import { getBestProductImage } from "@/lib/utils"
 import { toast } from "sonner"
 import { generateProductSlug } from "@/lib/seo"
 
@@ -25,6 +25,15 @@ interface Product {
   price: number
   stock: number
   image_url: string
+  images: Array<{
+    id: number
+    image: string
+    image_url: string
+    alt_text: string
+    order: number
+    is_primary: boolean
+    created_at: string
+  }>
   category: {
     id: number
     name: string
@@ -125,7 +134,7 @@ export default function ProductsPage() {
       id: product.id,
       name: product.name,
       price: product.price,
-      image: product.image_url,
+      image: getBestProductImage(product),
     }, (productName) => {
       toast.success("Added to Cart!", {
         description: `${productName} has been added to your cart.`,
@@ -327,7 +336,7 @@ export default function ProductsPage() {
                 <CardContent className="p-6">
                   <div className="aspect-square mb-4 overflow-hidden rounded-lg bg-gray-50 relative">
                     <Image
-                      src={getProductImageUrl(product.image_url)}
+                      src={getBestProductImage(product)}
                       alt={product.name}
                       width={300}
                       height={300}

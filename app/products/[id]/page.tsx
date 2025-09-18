@@ -13,7 +13,7 @@ import { productsAPI } from "@/lib/api"
 import ProductRating from "@/components/product-rating"
 import Image from "next/image"
 import { LoadingSpinner } from "@/components/ui/loading"
-import { getProductImageUrl } from "@/lib/utils"
+import { getBestProductImage, getAllProductImages } from "@/lib/utils"
 import { toast } from "sonner"
 import { generateProductStructuredData, generateProductMetaTags, generateBreadcrumbStructuredData, generateProductSlug } from "@/lib/seo"
 
@@ -24,6 +24,15 @@ interface Product {
   price: number
   stock: number
   image_url: string
+  images: Array<{
+    id: number
+    image: string
+    image_url: string
+    alt_text: string
+    order: number
+    is_primary: boolean
+    created_at: string
+  }>
   category: {
     id: number
     name: string
@@ -40,6 +49,7 @@ export default function ProductDetailPage() {
   const [product, setProduct] = useState<Product | null>(null)
   const [loading, setLoading] = useState(true)
   const [quantity, setQuantity] = useState(1)
+  const [selectedImageIndex, setSelectedImageIndex] = useState(0)
   const { addToCart } = useCart()
 
   useEffect(() => {
@@ -158,7 +168,7 @@ export default function ProductDetailPage() {
           id: product.id,
           name: product.name,
           price: product.price,
-          image: product.image_url,
+          image: getBestProductImage(product),
         }, (productName) => {
           if (i === quantity - 1) { // Only show toast on the last iteration
             toast.success("Added to Cart!", {
@@ -250,7 +260,7 @@ export default function ProductDetailPage() {
             <div className="space-y-4">
               <div className="aspect-square overflow-hidden rounded-xl bg-white shadow-lg">
                 <Image 
-                  src={getProductImageUrl(product.image_url)} 
+                  src={getAllProductImages(product)[selectedImageIndex] || getBestProductImage(product)} 
                   alt={product.name} 
                   width={500}
                   height={500}
@@ -261,6 +271,35 @@ export default function ProductDetailPage() {
                   }}
                 />
               </div>
+              
+              {/* Image Gallery */}
+              {getAllProductImages(product).length > 1 && (
+                <div className="grid grid-cols-4 gap-2">
+                  {getAllProductImages(product).map((imageUrl, index) => (
+                    <button
+                      key={index}
+                      onClick={() => setSelectedImageIndex(index)}
+                      className={`aspect-square overflow-hidden rounded-lg border-2 transition-all ${
+                        selectedImageIndex === index 
+                          ? 'border-blue-500 ring-2 ring-blue-200' 
+                          : 'border-gray-200 hover:border-gray-300'
+                      }`}
+                    >
+                      <Image 
+                        src={imageUrl} 
+                        alt={`${product.name} - Image ${index + 1}`} 
+                        width={100}
+                        height={100}
+                        className="w-full h-full object-cover"
+                        onError={(e) => {
+                          const target = e.target as HTMLImageElement;
+                          target.src = "/placeholder.svg";
+                        }}
+                      />
+                    </button>
+                  ))}
+                </div>
+              )}
             </div>
 
             {/* Product Details */}
