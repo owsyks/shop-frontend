@@ -150,14 +150,9 @@ const resources = {
       "auth.invalidCredentials": "Invalid email or password. Please try again.",
       "auth.passwordMismatch": "Passwords do not match",
       "auth.passwordLength": "Password must be at least 6 characters long",
-      "auth.firstName": "First Name",
-      "auth.lastName": "Last Name",
       "auth.username": "Username",
       "auth.phoneNumber": "Phone Number",
       "auth.address": "Address",
-      "auth.confirmPassword": "Confirm Password",
-      "auth.creatingAccount": "Creating Account...",
-      "auth.hasAccount": "Already have an account?",
       "auth.signInHere": "Sign in here",
 
       // Profile
@@ -379,14 +374,9 @@ const resources = {
       "auth.invalidCredentials": "بريد إلكتروني أو كلمة مرور غير صحيحة. حاول مرة أخرى.",
       "auth.passwordMismatch": "كلمات المرور غير متطابقة",
       "auth.passwordLength": "يجب أن تكون كلمة المرور 6 أحرف على الأقل",
-      "auth.firstName": "الاسم الأول",
-      "auth.lastName": "اسم العائلة",
       "auth.username": "اسم المستخدم",
       "auth.phoneNumber": "رقم الهاتف",
       "auth.address": "العنوان",
-      "auth.confirmPassword": "تأكيد كلمة المرور",
-      "auth.creatingAccount": "جاري إنشاء الحساب...",
-      "auth.hasAccount": "لديك حساب بالفعل؟",
       "auth.signInHere": "سجل دخولك هنا",
 
       // Profile
