@@ -117,7 +117,7 @@ export default function CheckoutPage() {
           quantity: item.quantity,
         })),
         delivery_address: formData.deliveryAddress,
-        delivery_state: formData.wilaya,
+        delivery_state: formData.wilaya.padStart(2, '0'),
         delivery_commune: formData.commune,
         delivery_type: formData.deliveryType,
         phone_number: formData.phone,

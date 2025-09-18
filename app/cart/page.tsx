@@ -53,9 +53,9 @@ export default function CartPage() {
     <div className="container mx-auto px-4 py-8">
       <div className="max-w-6xl mx-auto">
         <div className="flex items-center justify-between mb-8">
-          <h1 className="text-3xl font-bold">Shopping Cart</h1>
+          <h1 className="text-3xl font-bold">{t("cart.title")}</h1>
           <div className="text-muted-foreground">
-            {getTotalItems()} item{getTotalItems() !== 1 ? "s" : ""}
+            {getTotalItems()} {getTotalItems() !== 1 ? t("cart.items") : t("cart.item")}
           </div>
         </div>
 
@@ -64,7 +64,7 @@ export default function CartPage() {
           <div className="lg:col-span-2 space-y-4">
             <Card>
               <CardHeader className="flex flex-row items-center justify-between">
-                <CardTitle>Items in your cart</CardTitle>
+                <CardTitle>{t("cart.itemsInCart")}</CardTitle>
                 <Button
                   variant="ghost"
                   size="sm"
@@ -72,7 +72,7 @@ export default function CartPage() {
                   disabled={isClearing}
                   className="text-destructive hover:text-destructive"
                 >
-                  {isClearing ? "Clearing..." : "Clear all"}
+                  {isClearing ? t("cart.clearing") : t("cart.clearAll")}
                 </Button>
               </CardHeader>
               <CardContent className="space-y-4">
@@ -91,7 +91,7 @@ export default function CartPage() {
                       {/* Product Details */}
                       <div className="flex-1 min-w-0">
                         <h3 className="font-semibold text-balance truncate">{item.name}</h3>
-                        <p className="text-muted-foreground">{Number(item.price).toLocaleString()} DZD each</p>
+                        <p className="text-muted-foreground">{Number(item.price).toLocaleString()} {t("cart.dzdEach")}</p>
                       </div>
 
                       {/* Quantity Controls */}
@@ -112,7 +112,7 @@ export default function CartPage() {
 
                       {/* Item Total */}
                       <div className="text-right min-w-0">
-                        <p className="font-semibold">{(Number(item.price) * item.quantity).toLocaleString()} DZD</p>
+                        <p className="font-semibold">{(Number(item.price) * item.quantity).toLocaleString()} {t("cart.dzd")}</p>
                       </div>
 
                       {/* Remove Button */}
@@ -134,7 +134,7 @@ export default function CartPage() {
             {/* Continue Shopping */}
             <div className="flex justify-between items-center">
               <Link href="/products">
-                <Button variant="outline">Continue Shopping</Button>
+                <Button variant="outline">{t("cart.continueShopping")}</Button>
               </Link>
             </div>
           </div>
@@ -143,35 +143,35 @@ export default function CartPage() {
           <div className="space-y-6">
             <Card>
               <CardHeader>
-                <CardTitle>Order Summary</CardTitle>
+                <CardTitle>{t("cart.orderSummary")}</CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
                 <div className="flex justify-between">
-                  <span>Subtotal ({getTotalItems()} items)</span>
-                  <span>{Number(subtotal).toLocaleString()} DZD</span>
+                  <span>{t("cart.subtotal")} ({getTotalItems()} {getTotalItems() !== 1 ? t("cart.items") : t("cart.item")})</span>
+                  <span>{Number(subtotal).toLocaleString()} {t("cart.dzd")}</span>
                 </div>
 
                 <div className="flex justify-between">
-                  <span>Shipping</span>
-                  <span>{Number(shipping).toLocaleString()} DZD</span>
+                  <span>{t("cart.shipping")}</span>
+                  <span>{Number(shipping).toLocaleString()} {t("cart.dzd")}</span>
                 </div>
 
                 <Separator />
 
                 <div className="flex justify-between text-lg font-semibold">
-                  <span>Total</span>
-                  <span>{Number(total).toLocaleString()} DZD</span>
+                  <span>{t("cart.total")}</span>
+                  <span>{Number(total).toLocaleString()} {t("cart.dzd")}</span>
                 </div>
 
                 <Link href="/checkout" className="block">
                   <Button size="lg" className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-4 px-6 text-lg rounded-lg shadow-lg hover:shadow-xl transition-all duration-300">
-                    Proceed to Checkout
+                    {t("cart.proceedToCheckout")}
                     <ArrowRight className="ml-2 h-5 w-5" />
                   </Button>
                 </Link>
 
                 <div className="text-center">
-                  <p className="text-sm text-muted-foreground">Secure checkout with SSL encryption</p>
+                  <p className="text-sm text-muted-foreground">{t("cart.secureCheckout")}</p>
                 </div>
               </CardContent>
             </Card>
@@ -182,15 +182,15 @@ export default function CartPage() {
                 <div className="space-y-3 text-sm">
                   <div className="flex items-center space-x-2">
                     <div className="w-2 h-2 bg-blue-500 rounded-full" />
-                    <span>Fast delivery in 2-3 business days</span>
+                    <span>{t("cart.fastDelivery")}</span>
                   </div>
                   <div className="flex items-center space-x-2">
                     <div className="w-2 h-2 bg-purple-500 rounded-full" />
-                    <span>30-day return policy</span>
+                    <span>{t("cart.returnPolicy")}</span>
                   </div>
                   <div className="flex items-center space-x-2">
                     <div className="w-2 h-2 bg-green-500 rounded-full" />
-                    <span>Secure payment processing</span>
+                    <span>{t("cart.securePayment")}</span>
                   </div>
                 </div>
               </CardContent>
