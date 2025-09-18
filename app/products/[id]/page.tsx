@@ -78,10 +78,14 @@ export default function ProductDetailPage() {
 
   const fetchProduct = async () => {
     try {
+      console.log("Fetching product with ID:", params.id)
       const productData = await productsAPI.getById(params.id as string)
+      console.log("Product data received:", productData)
+      console.log("Product images:", productData.images)
       setProduct(productData)
     } catch (error) {
       console.error("Error fetching product:", error)
+      console.log("Falling back to mock product")
       const mockProduct = getMockProduct(Number(params.id))
       setProduct(mockProduct)
     } finally {
@@ -334,6 +338,8 @@ export default function ProductDetailPage() {
             {/* Product Image */}
             <div className="space-y-4">
               <div className="aspect-square overflow-hidden rounded-xl bg-white shadow-lg relative group">
+                {console.log("Product images for display:", getAllProductImages(product))}
+                {console.log("Selected image index:", selectedImageIndex)}
                 <Image 
                   src={getAllProductImages(product)[selectedImageIndex] || getBestProductImage(product)} 
                   alt={product.name} 
