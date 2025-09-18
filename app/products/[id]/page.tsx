@@ -56,6 +56,16 @@ export default function ProductDetailPage() {
     fetchProduct()
   }, [params.id])
 
+  // Debug product images when product changes
+  useEffect(() => {
+    if (product) {
+      console.log("Product loaded:", product)
+      console.log("Product images:", product.images)
+      console.log("All product images for display:", getAllProductImages(product))
+      console.log("Selected image index:", selectedImageIndex)
+    }
+  }, [product, selectedImageIndex])
+
   // Image navigation functions
   const nextImage = () => {
     if (product) {
@@ -338,8 +348,6 @@ export default function ProductDetailPage() {
             {/* Product Image */}
             <div className="space-y-4">
               <div className="aspect-square overflow-hidden rounded-xl bg-white shadow-lg relative group">
-                {console.log("Product images for display:", getAllProductImages(product))}
-                {console.log("Selected image index:", selectedImageIndex)}
                 <Image 
                   src={getAllProductImages(product)[selectedImageIndex] || getBestProductImage(product)} 
                   alt={product.name} 
