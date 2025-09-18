@@ -162,6 +162,17 @@ export default function ProductsPage() {
       description: "High-quality wireless headphones with noise cancellation",
       price: 26800,
       image_url: "/wireless-headphones.png",
+      images: [
+        {
+          id: 1,
+          image: "/wireless-headphones.png",
+          image_url: "/wireless-headphones.png",
+          alt_text: "Premium Wireless Headphones",
+          order: 0,
+          is_primary: true,
+          created_at: "2024-01-01T00:00:00Z"
+        }
+      ],
       category: {
         id: 1,
         name: "Electronics",
@@ -178,6 +189,17 @@ export default function ProductsPage() {
       description: "Track your fitness goals with this advanced smartwatch",
       price: 40200,
       image_url: "/fitness-smartwatch.png",
+      images: [
+        {
+          id: 2,
+          image: "/fitness-smartwatch.png",
+          image_url: "/fitness-smartwatch.png",
+          alt_text: "Smart Fitness Watch",
+          order: 0,
+          is_primary: true,
+          created_at: "2024-01-01T00:00:00Z"
+        }
+      ],
       category: {
         id: 1,
         name: "Electronics",
@@ -194,6 +216,17 @@ export default function ProductsPage() {
       description: "Durable backpack perfect for laptops and daily use",
       price: 10700,
       image_url: "/laptop-backpack.png",
+      images: [
+        {
+          id: 3,
+          image: "/laptop-backpack.png",
+          image_url: "/laptop-backpack.png",
+          alt_text: "Laptop Backpack",
+          order: 0,
+          is_primary: true,
+          created_at: "2024-01-01T00:00:00Z"
+        }
+      ],
       category: {
         id: 2,
         name: "Accessories",
@@ -210,6 +243,17 @@ export default function ProductsPage() {
       description: "Portable speaker with excellent sound quality",
       price: 20100,
       image_url: "/bluetooth-speaker.png",
+      images: [
+        {
+          id: 4,
+          image: "/bluetooth-speaker.png",
+          image_url: "/bluetooth-speaker.png",
+          alt_text: "Bluetooth Speaker",
+          order: 0,
+          is_primary: true,
+          created_at: "2024-01-01T00:00:00Z"
+        }
+      ],
       category: {
         id: 1,
         name: "Electronics",
@@ -226,6 +270,17 @@ export default function ProductsPage() {
       description: "Comfortable cotton t-shirt in various colors",
       price: 3350,
       image_url: "/cotton-t-shirt.jpg",
+      images: [
+        {
+          id: 5,
+          image: "/cotton-t-shirt.jpg",
+          image_url: "/cotton-t-shirt.jpg",
+          alt_text: "Cotton T-Shirt",
+          order: 0,
+          is_primary: true,
+          created_at: "2024-01-01T00:00:00Z"
+        }
+      ],
       category: {
         id: 3,
         name: "Fashion",
@@ -242,6 +297,17 @@ export default function ProductsPage() {
       description: "Lightweight running shoes for optimal performance",
       price: 17400,
       image_url: "/running-shoes-on-track.png",
+      images: [
+        {
+          id: 6,
+          image: "/running-shoes-on-track.png",
+          image_url: "/running-shoes-on-track.png",
+          alt_text: "Running Shoes",
+          order: 0,
+          is_primary: true,
+          created_at: "2024-01-01T00:00:00Z"
+        }
+      ],
       category: {
         id: 4,
         name: "Sports",

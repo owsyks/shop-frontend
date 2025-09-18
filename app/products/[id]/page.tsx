@@ -78,6 +78,17 @@ export default function ProductDetailPage() {
           "Experience superior sound quality with these premium wireless headphones. Featuring advanced noise cancellation technology, comfortable over-ear design, and up to 30 hours of battery life. Perfect for music lovers, professionals, and anyone who values high-quality audio.",
         price: 199.99,
         image_url: "/wireless-headphones.png",
+        images: [
+          {
+            id: 1,
+            image: "/wireless-headphones.png",
+            image_url: "/wireless-headphones.png",
+            alt_text: "Premium Wireless Headphones",
+            order: 0,
+            is_primary: true,
+            created_at: "2024-01-01T00:00:00Z"
+          }
+        ],
         category: {
           id: 1,
           name: "Electronics",
@@ -95,6 +106,17 @@ export default function ProductDetailPage() {
           "Track your fitness goals and stay connected with this advanced smartwatch. Monitor heart rate, steps, sleep patterns, and more. Water-resistant design perfect for workouts and daily wear.",
         price: 299.99,
         image_url: "/fitness-smartwatch.png",
+        images: [
+          {
+            id: 2,
+            image: "/fitness-smartwatch.png",
+            image_url: "/fitness-smartwatch.png",
+            alt_text: "Smart Fitness Watch",
+            order: 0,
+            is_primary: true,
+            created_at: "2024-01-01T00:00:00Z"
+          }
+        ],
         category: {
           id: 1,
           name: "Electronics",
@@ -112,6 +134,17 @@ export default function ProductDetailPage() {
           "Durable and stylish backpack designed for laptops up to 15.6 inches. Multiple compartments for organization, padded laptop sleeve, and comfortable shoulder straps make it perfect for work, school, or travel.",
         price: 79.99,
         image_url: "/laptop-backpack.png",
+        images: [
+          {
+            id: 3,
+            image: "/laptop-backpack.png",
+            image_url: "/laptop-backpack.png",
+            alt_text: "Laptop Backpack",
+            order: 0,
+            is_primary: true,
+            created_at: "2024-01-01T00:00:00Z"
+          }
+        ],
         category: {
           id: 2,
           name: "Accessories",
@@ -129,6 +162,17 @@ export default function ProductDetailPage() {
           "Portable Bluetooth speaker with exceptional sound quality. Compact design with powerful bass, long battery life, and water-resistant construction. Perfect for outdoor adventures or home entertainment.",
         price: 149.99,
         image_url: "/bluetooth-speaker.png",
+        images: [
+          {
+            id: 4,
+            image: "/bluetooth-speaker.png",
+            image_url: "/bluetooth-speaker.png",
+            alt_text: "Bluetooth Speaker",
+            order: 0,
+            is_primary: true,
+            created_at: "2024-01-01T00:00:00Z"
+          }
+        ],
         category: {
           id: 1,
           name: "Electronics",
@@ -148,6 +192,17 @@ export default function ProductDetailPage() {
         description: "This product could not be found.",
         price: 0,
         image_url: "/placeholder.svg?height=400&width=400",
+        images: [
+          {
+            id: 0,
+            image: "/placeholder.svg",
+            image_url: "/placeholder.svg",
+            alt_text: "Product Not Found",
+            order: 0,
+            is_primary: true,
+            created_at: "2024-01-01T00:00:00Z"
+          }
+        ],
         category: {
           id: 0,
           name: "Unknown",
