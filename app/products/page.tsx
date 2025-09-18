@@ -279,9 +279,14 @@ export default function ProductsPage() {
             </SelectTrigger>
             <SelectContent className="bg-white border border-gray-300 shadow-lg">
               <SelectItem value="all">All Categories</SelectItem>
-              {categories.map((category) => (
+              {categories.map((category, index) => (
                 <SelectItem key={category.id} value={category.id.toString()}>
-                  {category.name}
+                  <div className="flex items-center justify-between w-full">
+                    <span>{category.name}</span>
+                    {index < categories.length - 1 && (
+                      <span className="text-gray-400 ml-2">→</span>
+                    )}
+                  </div>
                 </SelectItem>
               ))}
             </SelectContent>
