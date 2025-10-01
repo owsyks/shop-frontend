@@ -725,6 +725,78 @@ export const deliveryOptions = [
   { id: 'desktop', name: 'Desktop Delivery', arabicName: 'التوصيل للمكتب', description: 'Delivered to your workplace' }
 ]
 
+// Shipping prices by wilaya (state) and delivery type
+export const shippingPrices: Record<number, { desktop: number; home: number }> = {
+  1: { desktop: 800, home: 1200 }, // Adrar
+  2: { desktop: 450, home: 800 },  // Chlef
+  3: { desktop: 550, home: 900 },  // Laghouat
+  4: { desktop: 450, home: 800 },  // Oum El Bouaghi
+  5: { desktop: 450, home: 800 },  // Batna
+  6: { desktop: 450, home: 800 },  // Béjaïa
+  7: { desktop: 450, home: 800 },  // Biskra
+  8: { desktop: 550, home: 900 },  // Béchar
+  9: { desktop: 300, home: 500 },  // Blida
+  10: { desktop: 400, home: 700 }, // Bouira
+  11: { desktop: 800, home: 1200 }, // Tamanrasset
+  12: { desktop: 450, home: 800 }, // Tébessa
+  13: { desktop: 450, home: 800 }, // Tlemcen
+  14: { desktop: 450, home: 800 }, // Tiaret
+  15: { desktop: 400, home: 700 }, // Tizi Ouzou
+  16: { desktop: 200, home: 400 }, // Alger
+  17: { desktop: 550, home: 900 }, // Djelfa
+  18: { desktop: 450, home: 800 }, // Jijel
+  19: { desktop: 450, home: 800 }, // Sétif
+  20: { desktop: 450, home: 800 }, // Saïda
+  21: { desktop: 450, home: 800 }, // Skikda
+  22: { desktop: 450, home: 800 }, // Sidi Bel Abbès
+  23: { desktop: 450, home: 800 }, // Annaba
+  24: { desktop: 450, home: 800 }, // Guelma
+  25: { desktop: 450, home: 800 }, // Constantine
+  26: { desktop: 400, home: 700 }, // Médéa
+  27: { desktop: 450, home: 800 }, // Mostaganem
+  28: { desktop: 450, home: 800 }, // M'Sila
+  29: { desktop: 450, home: 800 }, // Mascara
+  30: { desktop: 550, home: 900 }, // Ouargla
+  31: { desktop: 450, home: 800 }, // Oran
+  32: { desktop: 550, home: 900 }, // El Bayadh
+  33: { desktop: 800, home: 1200 }, // Illizi
+  34: { desktop: 450, home: 800 }, // Bordj Bou Arréridj
+  35: { desktop: 400, home: 700 }, // Boumerdès
+  36: { desktop: 450, home: 800 }, // El Tarf
+  37: { desktop: 800, home: 1200 }, // Tindouf
+  38: { desktop: 450, home: 800 }, // Tissemsilt
+  39: { desktop: 550, home: 900 }, // El Oued
+  40: { desktop: 450, home: 800 }, // Khenchela
+  41: { desktop: 450, home: 800 }, // Souk Ahras
+  42: { desktop: 350, home: 600 }, // Tipaza
+  43: { desktop: 450, home: 800 }, // Mila
+  44: { desktop: 450, home: 800 }, // Aïn Defla
+  45: { desktop: 550, home: 900 }, // Naâma
+  46: { desktop: 450, home: 800 }, // Aïn Témouchent
+  47: { desktop: 550, home: 900 }, // Ghardaïa
+  48: { desktop: 450, home: 800 }, // Relizane
+  49: { desktop: 800, home: 1200 }, // Timimoun
+  50: { desktop: 800, home: 1200 }, // Bordj Badji Mokhtar
+  51: { desktop: 550, home: 900 }, // Ouled Djellal
+  52: { desktop: 800, home: 1200 }, // Béni Abbès
+  53: { desktop: 800, home: 1200 }, // In Salah
+  54: { desktop: 800, home: 1200 }, // In Guezzam
+  55: { desktop: 550, home: 900 }, // Touggourt
+  56: { desktop: 800, home: 1200 }, // Djanet
+  57: { desktop: 550, home: 900 }, // El M'Ghair
+  58: { desktop: 550, home: 900 }  // El Meniaa
+}
+
+// Function to get shipping price based on wilaya and delivery type
+export const getShippingPrice = (wilayaId: number, deliveryType: 'desktop' | 'home'): number => {
+  const prices = shippingPrices[wilayaId]
+  if (!prices) {
+    // Default price if wilaya not found
+    return 800
+  }
+  return prices[deliveryType]
+}
+
 export const getWilayaById = (id: number): Wilaya | undefined => {
   return algeriaWilayas.find(wilaya => wilaya.id === id)
 }

@@ -15,7 +15,7 @@ import { useCart } from "@/hooks/use-cart"
 import { useAuth } from "@/hooks/use-auth"
 import { Loader2, Truck, Shield, ArrowLeft, Banknote } from "lucide-react"
 import { ordersAPI } from "@/lib/api"
-import { algeriaWilayas, deliveryOptions, type Wilaya, type Commune } from "@/lib/algeria-data"
+import { algeriaWilayas, deliveryOptions, getShippingPrice, type Wilaya, type Commune } from "@/lib/algeria-data"
 import { useTranslation } from "react-i18next"
 
 interface CheckoutForm {
@@ -149,7 +149,10 @@ export default function CheckoutPage() {
   }
 
   const subtotal = getTotalPrice()
-  const shipping = 700 // Fixed shipping cost of 700 DZD
+  // Calculate shipping based on selected wilaya and delivery type
+  const shipping = formData.wilaya && formData.deliveryType 
+    ? getShippingPrice(parseInt(formData.wilaya), formData.deliveryType as 'desktop' | 'home')
+    : 0
   const total = subtotal + shipping
 
   // Show loading while checking authentication
@@ -359,8 +362,18 @@ export default function CheckoutPage() {
                     </div>
                     <div className="flex justify-between">
                       <span>Shipping</span>
-                      <span>{Number(shipping).toFixed(2)} DZD</span>
+                      <span>
+                        {shipping > 0 
+                          ? `${Number(shipping).toLocaleString()} DZD` 
+                          : "Select state & delivery type"
+                        }
+                      </span>
                     </div>
+                    {shipping > 0 && (
+                      <div className="text-sm text-muted-foreground pl-4">
+                        {selectedWilaya?.name} • {formData.deliveryType === 'home' ? 'Home Delivery' : 'Desktop Delivery'}
+                      </div>
+                    )}
                     <Separator />
                     <div className="flex justify-between font-bold text-lg">
                       <span>Total</span>

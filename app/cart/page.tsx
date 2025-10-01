@@ -24,7 +24,8 @@ export default function CartPage() {
   }
 
   const subtotal = getTotalPrice()
-  const shipping = 700 // Fixed shipping cost of 700 DZD
+  // Shipping will be calculated at checkout based on selected state and delivery type
+  const shipping = 0 // Will be calculated at checkout
   const total = subtotal + shipping
 
   if (items.length === 0) {
@@ -153,14 +154,14 @@ export default function CartPage() {
 
                 <div className="flex justify-between">
                   <span>{t("cart.shipping")}</span>
-                  <span>{Number(shipping).toLocaleString()} {t("cart.dzd")}</span>
+                  <span className="text-muted-foreground">{t("cart.calculatedAtCheckout")}</span>
                 </div>
 
                 <Separator />
 
                 <div className="flex justify-between text-lg font-semibold">
-                  <span>{t("cart.total")}</span>
-                  <span>{Number(total).toLocaleString()} {t("cart.dzd")}</span>
+                  <span>{t("cart.subtotal")}</span>
+                  <span>{Number(subtotal).toLocaleString()} {t("cart.dzd")}</span>
                 </div>
 
                 <Link href="/checkout" className="block">
